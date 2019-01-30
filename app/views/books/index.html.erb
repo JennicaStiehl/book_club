@@ -1,0 +1,10 @@
+<h1>Book Index Page</h1>
+
+<% @books.each do |book| %>
+  <section id="book-<%= book.id %>">
+    <h3><%= book.title %></h3>
+    <p>Pages: <%= book.pages %></p>
+    <p>Publication Year: <%= book.year %></p>
+    <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
+  </section>
+<% end %>

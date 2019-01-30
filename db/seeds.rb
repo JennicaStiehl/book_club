@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require './app/models/author'
+require './app/models/book'
+Book.destroy_all
+Author.destroy_all
+
+authors = [
+  { name: 'Mark Z. Danielewski' },
+  { name: 'Terry Pratchett' },
+  { name: 'Neil Gaiman' },
+  { name: 'J. K. Rowling' },
+  { name: 'William Shakespeare' },
+  { name: 'Jane Austen' },
+  { name: 'Mark Twain' },
+  { name: 'James Patterson' },
+  { name: 'Candice Fox' },
+  { name: 'Maxine Paetro' }
+]
+
+authors.each do |author|
+  Author.create(author)
+end
+
+Author.find_by(name: 'Mark Z. Danielewski').books.create(title: 'House of Leaves', pages: 709, year: 2000)
+Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [Author.find_by(name: 'Terry Pratchett'), Author.find_by(name: 'Neil Gaiman')])
+Author.find_by(name: 'J. K. Rowling').books.create(title: 'Harry Potter and the Sorcerer\'s Stone', pages: 309, year: 1998)
