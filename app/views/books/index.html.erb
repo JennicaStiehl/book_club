@@ -6,5 +6,7 @@
     <p>Pages: <%= book.pages %></p>
     <p>Publication Year: <%= book.year %></p>
     <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
+    <p>Average Score: <%= book.reviews.average(:rating) %> </p>
+    <p>Number of Reviews: <%= book.reviews.count %> </p>
   </section>
 <% end %>
