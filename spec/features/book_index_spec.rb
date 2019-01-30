@@ -10,12 +10,12 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     book_2 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [author_2, author_3])
 
     visit '/books'
-
+    save_and_open_page
     within "#book-#{book_1.id}" do
       expect(page).to have_content(book_1.title)
       expect(page).to have_content(book_1.pages)
       expect(page).to have_content(book_1.year)
-      expect(page).to have_content(book_1.authors)
+      expect(page).to have_content(book_1.authors.name)
       expect(page).to_not have_content(book_2.title)
     end
 
@@ -23,7 +23,7 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
       expect(page).to have_content(book_2.title)
       expect(page).to have_content(book_2.pages)
       expect(page).to have_content(book_2.year)
-      expect(page).to have_content(book_2.authors)
+      expect(page).to have_content(book_2.authors.name)
       expect(page).to_not have_content(book_1.title)
     end
   end
