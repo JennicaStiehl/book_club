@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'when visitor visits book index page', type: :feature do
   it 'can see all titles and attributes of each book in the database' do
+    #User Story 6
     author_1 = Author.create(name: 'Mark Z. Danielewski')
     author_2 = Author.create(name: 'Terry Pratchett')
     author_3 = Author.create(name: 'Neil Gaiman')
