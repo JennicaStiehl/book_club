@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Heroku:
+https://damp-harbor-29425.herokuapp.com/ | https://git.heroku.com/damp-harbor-29425.git
