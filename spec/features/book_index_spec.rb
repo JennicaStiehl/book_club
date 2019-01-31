@@ -10,10 +10,10 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     @book_2 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@author_2, @author_3])
     @book_3 = @author_4.books.create(title: 'Harry Potter and the Sorcerer\'s Stone', pages: 309, year: 1998)
     @user_1 = User.create(name: 'User 1')
-    @review_1 = Review.create(title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: @book_1, user: @user_1)
+    @review_1 = Review.create(review_title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: @book_1, user: @user_1)
     @user_2 = User.create(name: 'User 2')
-    @review_2 = Review.create(title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: @book_1, user: @user_2)
-    @review_3 = Review.create(title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: @book_2, user: @user_2)
+    @review_2 = Review.create(review_title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: @book_1, user: @user_2)
+    @review_3 = Review.create(review_title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: @book_2, user: @user_2)
   end
   it 'can see all titles and attributes of each book in the database' do
     #User Story 6
@@ -56,9 +56,8 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     #
     # click_link("pages_desc")
     # Book.order('pages').all.should == [@book_1, @book_3, @book_2]
-    save_and_open_page
     click_link("rating")
-    Book.order('pages').all.should == [@book_3, @book_1, @book_2]
+    Book.order('pages').all.should == [@book_1, @book_2]
 
     # click_link("rating_desc")
     # Book.order('pages').all.should == [@book_2, @book_1, @book_3]

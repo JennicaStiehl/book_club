@@ -12,12 +12,15 @@ class Book < ApplicationRecord
   end
 
   def self.sort_by_rating
-    binding.pry
+    Book.select('books.*, reviews.*').joins(:reviews).order('reviews.rating')
   end
 
   def self.sort_by_rating_desc
   end
 
   def self.sort_by_review_number
+  end
+
+  def self.sort_by_review_number_desc
   end
 end

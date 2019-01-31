@@ -30,3 +30,10 @@ end
 Author.find_by(name: 'Mark Z. Danielewski').books.create(title: 'House of Leaves', pages: 709, year: 2000)
 Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [Author.find_by(name: 'Terry Pratchett'), Author.find_by(name: 'Neil Gaiman')])
 Author.find_by(name: 'J. K. Rowling').books.create(title: 'Harry Potter and the Sorcerer\'s Stone', pages: 309, year: 1998)
+
+User.create(name: 'User 1')
+User.create(name: 'User 2')
+
+Review.create(review_title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: Book.find_by(title: 'House of Leaves'), user: User.find_by(name: 'User 1'))
+Review.create(review_title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: Book.find_by(title: 'House of Leaves'), user: User.find_by(name: 'User 1'))
+Review.create(review_title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: Book.find_by(title: 'Good Omens'), user: 'User 2')
