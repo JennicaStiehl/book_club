@@ -1,4 +1,10 @@
 <h1>Book Index Page</h1>
+<%= link_to('pages', books_path(sort: :pages)) %>
+<%= link_to('pages_desc', books_path(sort: :pages_desc)) %>
+<%= link_to('rating', books_path(sort: :rating)) %>
+<%= link_to('rating_desc', books_path(sort: :rating_desc)) %>
+<%= link_to('review_number', books_path(sort: :review_number)) %>
+<%= link_to('review_number_desc', books_path(sort: :review_number_desc)) %>
 
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>">
