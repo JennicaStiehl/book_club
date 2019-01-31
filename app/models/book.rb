@@ -12,7 +12,8 @@ class Book < ApplicationRecord
   end
 
   def self.sort_by_rating
-    Book.select('books.*, reviews.*').joins(:reviews).order('reviews.rating')
+    # binding.pry
+    Book.select('books.id, avg(reviews.rating)').joins(:reviews).group('books.id').order('avg(review.rating)')
   end
 
   def self.sort_by_rating_desc
