@@ -8,9 +8,9 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     @book_1 = @author_1.books.create(title: 'House of Leaves', pages: 709, year: 2000)
     @book_2 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@author_2, @author_3])
     @user_1 = User.create(name: 'User 1')
-    @review_1 = Review.create(title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: @book_1, user: @user_1)
+    @review_1 = Review.create(review_title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: @book_1, user: @user_1)
     @user_2 = User.create(name: 'User 2')
-    @review_2 = Review.create(title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: @book_1, user: @user_2)
+    @review_2 = Review.create(review_title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: @book_1, user: @user_2)
   end
   it 'can see all titles and attributes of each book in the database' do
     #User Story 6
