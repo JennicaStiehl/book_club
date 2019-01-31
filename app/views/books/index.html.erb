@@ -1,10 +1,63 @@
-<h1>Book Index Page</h1>
-
-<% @books.each do |book| %>
-  <section id="book-<%= book.id %>">
-    <h3><%= book.title %></h3>
-    <p>Pages: <%= book.pages %></p>
-    <p>Publication Year: <%= book.year %></p>
-    <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
-  </section>
-<% end %>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/index.css">
+</head>
+<body>
+  <div class="header">
+    <div><h2>All Books</h2></div>
+    <div class="stats">
+      <div>
+        <p>Highest Rated Books:</p>
+        <li>Book 1</li>
+        <li>Book 2</li>
+        <li>Book 3</li>
+      </div>
+      <div>
+        <p>Lowest Rated Books</p>
+        <li>Book 1</li>
+        <li>Book 2</li>
+        <li>Book 3</li>
+      </div>
+      <div>
+        <p>Top Users</p>
+        <li>User 1</li>
+        <li>User 2</li>
+        <li>User 3</li>
+      </div>
+    </div>
+  </div>
+  <div class="sorting-bar">
+    <div><p>Sort page by:</p></div>
+    <div class="sorting-links">
+      <div class="links-row-1">
+        <%= link_to('Pages (Ascending)', books_path(sort: :pages)) %>
+        <%= link_to('Pages (Descending)', books_path(sort: :pages_desc)) %>
+        <%= link_to('Rating (Ascending)', books_path(sort: :rating)) %>
+      </div>
+      <div class = "links-row-2">
+        <%= link_to('Rating (Descending)', books_path(sort: :rating_desc)) %>
+        <%= link_to('Number of Reviews (Ascending)', books_path(sort: :review_number)) %>
+        <%= link_to('Number of Reviews (Descending)', books_path(sort: :review_number_desc)) %>
+      </div>
+    </div>
+  </div>
+  <div class="book-list">
+    <% @books.each do |book| %>
+      <div class="book">
+        <div class="book-title">
+          <h3><%= book.title %></h3>
+        </div>
+        <div>
+          <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
+          <p>Pages: <%= book.pages %></p>
+          <p>Publication Year: <%= book.year %></p>
+        </div>
+        <div>
+          <p>Average Score: <%= book.reviews.average(:rating) %> </p>
+          <p>Number of Reviews: <%= book.reviews.count %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
