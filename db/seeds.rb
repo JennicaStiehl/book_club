@@ -36,4 +36,4 @@ User.create(name: 'User 2')
 
 Review.create(review_title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: Book.find_by(title: 'House of Leaves'), user: User.find_by(name: 'User 1'))
 Review.create(review_title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: Book.find_by(title: 'House of Leaves'), user: User.find_by(name: 'User 1'))
-Review.create(review_title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: Book.find_by(title: 'Good Omens'), user: 'User 2')
+Review.create(review_title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: Book.find_by(title: 'Good Omens'), user: User.find_by(name: 'User 2'))
