@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   has_many :reviews
 
   def self.sort_by_pages(order)
-    Book.order(pages: :order)
+    Book.order(pages: :"#{order}")
   end
 
   def self.sort_by_rating(order)
@@ -12,7 +12,7 @@ class Book < ApplicationRecord
   end
 
   def self.sort_by_review_number(order)
-    Book.select('books.*, count(reviews.rating) as num_rating').left_outer_joins(:reviews).group('books.id').order("num_rating #{order}") 
+    Book.select('books.*, count(reviews.rating) as num_rating').left_outer_joins(:reviews).group('books.id').order("num_rating #{order}")
   end
 
 end
