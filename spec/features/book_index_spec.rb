@@ -10,7 +10,7 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     @book_2 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@author_2, @author_3])
     @book_3 = @author_4.books.create(title: 'Harry Potter and the Sorcerer\'s Stone', pages: 309, year: 1998)
     @user_1 = User.create(name: 'User 1')
-    @review_1 = Review.create(review_title: 'House of Leaves Review', text: 'It was good.', rating: 3, book: @book_1, user: @user_1)
+    @review_1 = Review.create(review_title: 'House of Leaves Review', text: "It was good.", rating: 3, book: @book_1, user: @user_1)
     @user_2 = User.create(name: 'User 2')
     @review_2 = Review.create(review_title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: @book_1, user: @user_2)
     @review_3 = Review.create(review_title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: @book_2, user: @user_2)
@@ -68,5 +68,21 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     # click_link("review_no_desc")
     # Book.order('pages').all.should == [@book_1, @book_2, @book_3]
 
+  end
+
+# end
+# RSpec.describe 'When I visit the book index page', type: :feature do
+  describe "it see an area showing statistics about all books" do
+
+    it "sees three of the highest-rated books (book title and rating score)" do
+      binding.pry
+      expect(page).to have_content(@book_1.title, @book_1.avg_rating)
+      expect(page).to have_content("Statistics")
+      expect(page).to have_content(@book_2.title, @book_2.rating.rating)
+    end
+    it "three of the worst-rated books (book title and rating score)" do
+    end
+    it "three users who have written the most reviews (user name and review count)" do
+    end
   end
 end
