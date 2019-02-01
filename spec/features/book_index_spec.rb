@@ -52,25 +52,37 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
 
   it 'can sort the page by rating, pages, and reviews' do
     #User Story 8
-
     visit books_path
 
-    click_link(1)
-    Book.all.should == [@book_2, @book_3, @book_1]
+    click_link('Pages (Ascending)')
+    expect(page.all('.book-title')[0]).to have_content('Good Omens')
+    expect(page.all('.book-title')[1]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    expect(page.all('.book-title')[2]).to have_content('House of Leaves')
 
-    click_link(2)
-    Book.all.should == [@book_1, @book_3, @book_2]
+    click_link('Pages (Descending)')
+    expect(page.all('.book-title')[0]).to have_content('House of Leaves')
+    expect(page.all('.book-title')[1]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    expect(page.all('.book-title')[2]).to have_content('Good Omens')
 
-    click_link(3)
-    Book.all.should == [@book_3, @book_1, @book_2]
+    # Need to add default value to average rating
+    # click_link('Rating (Ascending)')
+    # expect(page.all('.book-title')[0]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    # expect(page.all('.book-title')[1]).to have_content('House of Leaves')
+    # expect(page.all('.book-title')[2]).to have_content('Good Omens')
+    #
+    # click_link('Rating (Descending)')
+    # expect(page.all('.book-title')[0]).to have_content('Good Omens')
+    # expect(page.all('.book-title')[1]).to have_content('House of Leaves')
+    # expect(page.all('.book-title')[2]).to have_content('Harry Potter and the Sorcerer\'s Stone')
 
-    click_link(4)
-    Book.all.should == [@book_2, @book_1, @book_3]
+    click_link('Reviews (Ascending)')
+    expect(page.all('.book-title')[0]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    expect(page.all('.book-title')[1]).to have_content('Good Omens')
+    expect(page.all('.book-title')[2]).to have_content('House of Leaves')
 
-    click_link(5)
-    Book.all.should == [@book_3, @book_2, @book_1]
-
-    click_link(6)
-    Book.all.should == [@book_1, @book_2, @book_3]
+    click_link('Reviews (Descending)')
+    expect(page.all('.book-title')[0]).to have_content('House of Leaves')
+    expect(page.all('.book-title')[1]).to have_content('Good Omens')
+    expect(page.all('.book-title')[2]).to have_content('Harry Potter and the Sorcerer\'s Stone')
   end
 end
