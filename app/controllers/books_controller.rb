@@ -5,6 +5,5 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.first
-    binding.pry
   end
 end

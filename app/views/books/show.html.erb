@@ -3,6 +3,21 @@
   <p>Author(s): <%= @book.authors.map {|author| author.name}.join(", ") %></p>
   <p>Pages: <%= @book.pages %>
 </div>
+<div class='top-reviews'>
+  <h3>Top Reviews</h3>
+  <% @book.top_reviews.each do |review| %>
+  <p>Title: <%= review.review_title %>, Rating: <%= review.rating %> / 5, User: <%= review.user.name %> </p>
+  <% end %>
+</div>
+<div class='bottom-reviews'>
+  <h3>Bottom Reviews</h3>
+  <% @book.bottom_reviews.each do |review| %>
+  <p>Title: <%= review.review_title %>, Rating: <%= review.rating %> / 5, User: <%= review.user.name %> </p>
+  <% end %>
+</div>
+<div class='average-rating'>
+  <p>Average rating: <%= @book.average_rating %></p>
+</div>
 <% @book.reviews.each do |review| %>
   <div class="review-<%= review.id %>">
     <p> <%= review.review_title %> </p>
