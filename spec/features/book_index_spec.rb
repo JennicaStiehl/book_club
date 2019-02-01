@@ -19,6 +19,7 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     #User Story 6
 
     visit books_path
+
     within(class: "book-#{@book_1.id}") do
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content("Pages: #{@book_1.pages}")

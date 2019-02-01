@@ -16,4 +16,8 @@ class BooksController < ApplicationController
       @books = Book.all
     end
   end
+
+  def show
+    @book = Book.first
+  end
 end
