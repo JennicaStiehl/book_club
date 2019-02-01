@@ -1,0 +1,12 @@
+<div class='book-info'>
+  <p> <%= @book.title %></p>
+  <p>Author(s): <%= @book.authors.map {|author| author.name}.join(", ") %></p>
+  <p>Pages: <%= @book.pages %>
+</div>
+<% @book.reviews.each do |review| %>
+  <div class="review-<%= review.id %>">
+    <p> <%= review.review_title %> </p>
+    <p><%= review.text %></p>
+    <p>Rating: <%= review.rating %> / 5</p>
+  </div>
+<% end %>
