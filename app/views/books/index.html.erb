@@ -30,20 +30,20 @@
     <div><p>Sort page by:</p></div>
     <div class="sorting-links">
       <div class="links-row-1">
-        <%= link_to('Pages (Ascending)', books_path(sort: :pages)) %>
-        <%= link_to('Pages (Descending)', books_path(sort: :pages_desc)) %>
-        <%= link_to('Rating (Ascending)', books_path(sort: :rating)) %>
+        <%= link_to('1', books_path(sort: :pages)) %>
+        <%= link_to('2', books_path(sort: :pages_desc)) %>
+        <%= link_to('3', books_path(sort: :rating)) %>
       </div>
       <div class = "links-row-2">
-        <%= link_to('Rating (Descending)', books_path(sort: :rating_desc)) %>
-        <%= link_to('Number of Reviews (Ascending)', books_path(sort: :review_number)) %>
-        <%= link_to('Number of Reviews (Descending)', books_path(sort: :review_number_desc)) %>
+        <%= link_to('4', books_path(sort: :rating_desc)) %>
+        <%= link_to('5', books_path(sort: :review_number)) %>
+        <%= link_to('6', books_path(sort: :review_number_desc)) %>
       </div>
     </div>
   </div>
   <div class="book-list">
     <% @books.each do |book| %>
-      <div class="book">
+       <div class="book-<%= book.id %>">
         <div class="book-title">
           <h3><%= book.title %></h3>
         </div>
