@@ -88,7 +88,7 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
 
   it 'sees a navigation bar' do
     visit books_path
-    
+
     expect(page).to have_content('Home')
     expect(page).to have_content('Books')
   end
