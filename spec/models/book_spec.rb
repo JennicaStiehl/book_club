@@ -49,8 +49,8 @@ RSpec.describe Book, type: :model do
     end
 
     describe '.bottom_by_rating' do
-      it 'returns the top three books by review rating' do
-        expect(Book.bottom_by_rating).to eq([@book_3, @book_1, @book_2])
+      it 'returns the bottom three books by review rating' do
+        expect(Book.bottom_by_rating).to eq([@book_4, @book_3, @book_1])
       end
     end
   end

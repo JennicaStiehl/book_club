@@ -127,7 +127,7 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     end
     it "three users who have written the most reviews (user name and review count)" do
       visit books_path
-      save_and_open_page
+
       within(class: "top-users") do
         expect(page).to have_content(@user_1.name, "Review Count: #{@user_1.reviews.count}")
         expect(page).to have_content(@user_2.name, "Review Count: #{@user_2.reviews.count}")
