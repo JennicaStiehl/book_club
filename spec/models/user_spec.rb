@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Book, type: :model do
+RSpec.describe User, type: :model do
   before :each do
     @author_1 = Author.create(name: "Gloria Stiehl")
     @book_1 = Book.create(title: "new book", pages:20, year: 2019, authors: [@author_1])
@@ -25,7 +25,7 @@ RSpec.describe Book, type: :model do
 
     @author_3 = Author.create(name: "John Stone")
     @book_4 = Book.create(title: "The first Voyage", pages:20, year: 2019, authors: [@author_3])
-    @review_10 = @book_4.reviews.create(review_title: "a", rating: 1, text: "a", user: @user_1)
+    @review_10 = @book_4.reviews.create(review_title: "a", rating: 1, text: "a", user: @user_2)
     @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
     @review_12 = @book_4.reviews.create(review_title: "c", rating: 1, text: "c", user: @user_1)
   end
@@ -42,11 +42,9 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'class methods' do
-    it "can find the #top_3_rated_books" do
-      expect(Book.select_by_rating(:desc, 3)).to eq([@book_2, @book_1, @book_3])
-      expect(Book.select_by_rating(:asc, 3)).to eq([@book_4, @book_3, @book_1])
+    it "three users who have written the most reviews (user name and review count)" do
+      expect(User.most_reviews).to eq([@user_1, @user_2, @user_3])
     end
-
   end
 
   describe 'instance methods' do
