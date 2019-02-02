@@ -37,7 +37,7 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
   it 'shows the top and bottom three reviews for the book as well as the average rating of all reviews' do
     #User Story 11
     visit book_path(@book_1.id)
-    save_and_open_page
+
     within(class: 'top-reviews') do
       expect(page).to have_content("Title: House of Leaves Review 5, Rating: 5 / 5, User: User 5")
       expect(page).to have_content("Title: House of Leaves Review 4, Rating: 4 / 5, User: User 4")

@@ -8,4 +8,12 @@ class User < ApplicationRecord
         .order("num_reviews desc")
         .first(3)
   end
+
+  def sort_by_oldest
+    self.reviews.order(created_at: :desc)
+  end
+
+  def sort_by_newest
+    self.reviews.order(created_at: :asc)
+  end
 end

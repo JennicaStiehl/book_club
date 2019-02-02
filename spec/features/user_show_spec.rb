@@ -9,13 +9,27 @@ RSpec.describe 'when visitor visits a user\'s show page', type: :feature do
     @review_2 = Review.create(review_title: 'House of Leaves Review 2', text: 'I didn\'t like it.', rating: 2, book: @book_1, user: @user_1)
     @review_3 = Review.create(review_title: 'House of Leaves Review 3', text: 'I liked it', rating: 3, book: @book_1, user: @user_1)
   end
+
   it 'displays all reviews by that user, each with a title, rating and text' do
     visit user_path(@user_1.id)
-    save_and_open_page
     within(class: "review-#{@review_1.id}") do
       expect(page).to have_content("Title: #{@review_1.review_title}")
       expect(page).to have_content("Rating: #{@review_1.rating} / 5")
       expect(page).to have_content("Review: #{@review_1.text}")
     end
+  end
+
+  it 'has options to sort the page\'s reviews by age' do
+    visit user_path(@user_1.id)
+    click_link('Oldest')
+    save_and_open_page
+    expect(page.all('.title')[0]).to have_content("Title: #{@review_3.review_title}")
+    expect(page.all('.title')[1]).to have_content("Title: #{@review_2.review_title}")
+    expect(page.all('.title')[2]).to have_content("Title: #{@review_1.review_title}")
+
+    click_link('Newest')
+    expect(page.all('.title')[0]).to have_content("Title: #{@review_1.review_title}")
+    expect(page.all('.title')[1]).to have_content("Title: #{@review_2.review_title}")
+    expect(page.all('.title')[2]).to have_content("Title: #{@review_3.review_title}")
   end
 end

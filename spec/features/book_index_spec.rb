@@ -67,7 +67,6 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
   it 'can sort the page by rating, pages, and reviews' do
     #User Story 8
     visit books_path
-
     click_link('Pages (Ascending)')
     expect(page.all('.book-title')[0]).to have_content('Good Omens')
     expect(page.all('.book-title')[1]).to have_content('Harry Potter and the Sorcerer\'s Stone')
