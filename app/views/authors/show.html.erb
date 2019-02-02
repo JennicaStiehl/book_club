@@ -6,5 +6,9 @@
     <p>Year of Publication: <%= book.year %></p>
     <p>Pages: <%= book.pages %> </p>
     <p>Coauthor(s): <%= book.coauthors(@author).map {|author| author.name}.join(", ") %></p>
+    <h3>Top Review:</h3>
+    <p>Review Title: <%= book.top_review.review_title %> </p>
+    <p>Rating: <%= book.top_review.rating %> / 5</p>
+    <p>Username: <%= book.top_review.user.name %> </p>
   </div>
 <% end %>

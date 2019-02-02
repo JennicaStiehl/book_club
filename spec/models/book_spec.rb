@@ -54,5 +54,11 @@ RSpec.describe Book, type: :model do
         expect(@book_2.coauthors(@author_2)).to eq([@author_3])
       end
     end
+
+    describe '.top_review' do
+      it 'returns the top review by rating for a given book' do
+        expect(@book_1.top_review).to eq(@review_5)
+      end
+    end
   end
 end
