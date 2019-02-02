@@ -47,4 +47,12 @@ class Book < ApplicationRecord
     books = sort_by_rating(order)
     books.first(num)
   end
+
+  def self.top_by_rating
+    sort_by_rating(:desc).first(3)
+  end
+
+  def self.bottom_by_rating
+    sort_by_rating(:asc).first(3)
+  end
 end
