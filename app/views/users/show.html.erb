@@ -8,5 +8,6 @@
     <h3 class="title">Title: <%= review.review_title %></h3>
     <p>Rating: <%= review.rating %> / 5</p>
     <p>Review: <%= review.text %></p>
+    <%= link_to('Delete Review', user_review_path(review, user_id: review.user_id), method: :delete) %>
   </div>
 <% end %>
