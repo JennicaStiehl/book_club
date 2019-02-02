@@ -1,0 +1,8 @@
+<h1> <%= @user.name %> </h1>
+<% @user.reviews.each do |review| %>
+  <div class="review-<%= review.id %> ">
+    <h3>Title: <%= review.review_title %></h3>
+    <p>Rating: <%= review.rating %> / 5</p>
+    <p>Review: <%= review.text %></p>
+  </div>
+<% end %>
