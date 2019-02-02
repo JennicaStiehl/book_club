@@ -32,13 +32,12 @@ RSpec.describe 'when visitor visits a user\'s show page', type: :feature do
     expect(page.all('.title')[2]).to have_content("Title: #{@review_3.review_title}")
   end
 
-  it 'has an option to delete a review' do
+  it 'has an option to delete each review' do
     visit user_path(@user_1.id)
     expect(page).to have_content("Title: #{@review_1.review_title}")
     within(class: "review-#{@review_1.id}") do
       click_link('Delete Review')
     end
-    save_and_open_page
 
     expect(page).to_not have_content("Title: #{@review_1.review_title}")
   end

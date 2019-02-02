@@ -23,4 +23,11 @@ class BooksController < ApplicationController
   def show
     @book = Book.first
   end
+
+  def destroy
+    Review.where(book_id: params[:id]).destroy_all
+    AuthorBook.where(book_id: params[:id]).destroy_all
+    Book.find(params[:id]).destroy
+    redirect_to books_path
+  end
 end
