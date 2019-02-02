@@ -1,4 +1,5 @@
 <div class='book-info'>
+  <%= link_to('Delete Book', book_path(@book), method: :delete) %>
   <p> <%= @book.title %></p>
   <p>Author(s): <%= @book.authors.map {|author| author.name}.join(", ") %></p>
   <p>Pages: <%= @book.pages %></p>
