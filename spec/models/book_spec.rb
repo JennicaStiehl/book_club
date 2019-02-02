@@ -15,7 +15,10 @@ RSpec.describe Book, type: :model do
   describe 'Instance Methods' do
     before :each do
       @author_1 = Author.create(name: 'Mark Z. Danielewski')
+      @author_2 = Author.create(name: 'Terry Pratchett')
+      @author_3 = Author.create(name: 'Neil Gaiman')
       @book_1 = @author_1.books.create(title: 'House of Leaves', pages: 709, year: 2000)
+      @book_2 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@author_2, @author_3])
       @user_1 = User.create(name: 'User 1')
       @user_2 = User.create(name: 'User 2')
       @user_3 = User.create(name: 'User 3')
@@ -42,6 +45,19 @@ RSpec.describe Book, type: :model do
     describe '.average_rating' do
       it 'returns the average rating for that book' do
         expect(@book_1.average_rating).to eq(3)
+      end
+    end
+
+    describe '.coauthors(author)' do
+      it 'returns an array of all authors for the book, excluding the author passed as an argument' do
+        expect(@book_1.coauthors(@author_1)).to eq([])
+        expect(@book_2.coauthors(@author_2)).to eq([@author_3])
+      end
+    end
+
+    describe '.top_review' do
+      it 'returns the top review by rating for a given book' do
+        expect(@book_1.top_review).to eq(@review_5)
       end
     end
   end

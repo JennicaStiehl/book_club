@@ -11,8 +11,16 @@ class Book < ApplicationRecord
     reviews.order(:rating).limit(3)
   end
 
+  def top_review
+    reviews.order(rating: :desc).first
+  end
+
   def average_rating
     reviews.average(:rating)
+  end
+
+  def coauthors(author)
+    authors.where.not(id: author.id)
   end
 
   def self.sort_by_pages(order)
