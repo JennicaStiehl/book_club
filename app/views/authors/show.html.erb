@@ -1,0 +1,10 @@
+<h1><%= @author.name %></h1>
+
+<% @author.books.each do |book| %>
+  <div class="book-<%= book.id %>">
+    <h3><%= book.title %></h3>
+    <p>Year of Publication: <%= book.year %></p>
+    <p>Pages: <%= book.pages %> </p>
+    <p>Coauthor(s): <%= book.coauthors(@author).map {|author| author.name}.join(", ") %></p>
+  </div>
+<% end %>

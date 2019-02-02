@@ -15,6 +15,10 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
+  def coauthors(author)
+    authors.where.not(id: author.id)
+  end
+
   def self.sort_by_pages(order)
     Book.order(pages: :"#{order}")
   end
