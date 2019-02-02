@@ -19,20 +19,18 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     #User Story 6
 
     visit books_path
-    within "#book-#{@book_1.id}" do
-      expect(page).to have_content(@book_1.title)
-      expect(page).to have_content(@book_1.pages)
-      expect(page).to have_content(@book_1.year)
-      expect(page).to have_content(@book_1.authors.name)
-      expect(page).to_not have_content(@book_2.title)
-    end
 
-    within "#book-#{@book_2.id}" do
+    within(class: "book-#{@book_1.id}") do
+      expect(page).to have_content(@book_1.title)
+      expect(page).to have_content("Pages: #{@book_1.pages}")
+      expect(page).to have_content("Publication Year: #{@book_1.year}")
+      expect(page).to have_content("Author(s): #{@book_1.authors.first.name}")
+    end
+    within(class: "book-#{@book_2.id}") do
       expect(page).to have_content(@book_2.title)
-      expect(page).to have_content(@book_2.pages)
-      expect(page).to have_content(@book_2.year)
-      expect(page).to have_content(@book_2.authors.name)
-      expect(page).to_not have_content(@book_1.title)
+      expect(page).to have_content("Pages: #{@book_2.pages}")
+      expect(page).to have_content("Publication Year: #{@book_2.year}")
+      expect(page).to have_content("Author(s): #{@book_2.authors.first.name}, #{@book_2.authors.second.name}")
     end
   end
 
@@ -41,33 +39,58 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
 
     visit books_path
 
-    within "#book-#{@book_1.id}" do
+    within(class: "book-#{@book_1.id}") do
       expect(page).to have_content('Average Score: 4')
       expect(page).to have_content('Number of Reviews: 2')
+    end
+
+    within(class: "book-#{@book_2.id}") do
+      expect(page).to have_content('Average Score: 5')
+      expect(page).to have_content('Number of Reviews: 1')
     end
   end
 
   it 'can sort the page by rating, pages, and reviews' do
     #User Story 8
-
     visit books_path
-    # click_link("pages")
-    # Book.order('pages').all.should == [@book_2, @book_3, @book_1]
-    #
-    # click_link("pages_desc")
-    # Book.order('pages').all.should == [@book_1, @book_3, @book_2]
-    click_link("rating")
-    Book.order('pages').all.should == [@book_1, @book_2]
 
-    # click_link("rating_desc")
-    # Book.order('pages').all.should == [@book_2, @book_1, @book_3]
-    #
-    # click_link("review_number")
-    # Book.order('pages').all.should == [@book_3, @book_2, @book_1]
-    #
-    # click_link("review_no_desc")
-    # Book.order('pages').all.should == [@book_1, @book_2, @book_3]
+    click_link('Pages (Ascending)')
+    expect(page.all('.book-title')[0]).to have_content('Good Omens')
+    expect(page.all('.book-title')[1]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    expect(page.all('.book-title')[2]).to have_content('House of Leaves')
 
+    click_link('Pages (Descending)')
+    expect(page.all('.book-title')[0]).to have_content('House of Leaves')
+    expect(page.all('.book-title')[1]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    expect(page.all('.book-title')[2]).to have_content('Good Omens')
+
+    # Need to add default value to average rating
+    # click_link('Rating (Ascending)')
+    # expect(page.all('.book-title')[0]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    # expect(page.all('.book-title')[1]).to have_content('House of Leaves')
+    # expect(page.all('.book-title')[2]).to have_content('Good Omens')
+    #
+    # click_link('Rating (Descending)')
+    # expect(page.all('.book-title')[0]).to have_content('Good Omens')
+    # expect(page.all('.book-title')[1]).to have_content('House of Leaves')
+    # expect(page.all('.book-title')[2]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+
+    click_link('Reviews (Ascending)')
+    expect(page.all('.book-title')[0]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+    expect(page.all('.book-title')[1]).to have_content('Good Omens')
+    expect(page.all('.book-title')[2]).to have_content('House of Leaves')
+
+    click_link('Reviews (Descending)')
+    expect(page.all('.book-title')[0]).to have_content('House of Leaves')
+    expect(page.all('.book-title')[1]).to have_content('Good Omens')
+    expect(page.all('.book-title')[2]).to have_content('Harry Potter and the Sorcerer\'s Stone')
+  end
+
+  it 'sees a navigation bar' do
+    visit books_path
+
+    expect(page).to have_content('Home')
+    expect(page).to have_content('Books')
   end
 
 # end

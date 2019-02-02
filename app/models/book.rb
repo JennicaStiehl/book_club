@@ -5,8 +5,28 @@ class Book < ApplicationRecord
   has_many :authors, through: :author_books
   has_many :reviews
 
+  def top_reviews
+    reviews.order(rating: :desc).limit(3)
+  end
+
+  def bottom_reviews
+    reviews.order(:rating).limit(3)
+  end
+
+  def top_review
+    reviews.order(rating: :desc).first
+  end
+
+  def average_rating
+    reviews.average(:rating)
+  end
+
+  def coauthors(author)
+    authors.where.not(id: author.id)
+  end
+
   def self.sort_by_pages(order)
-    Book.order(pages: :order)
+    Book.order(pages: :"#{order}")
   end
 
   def self.sort_by_rating(order)
@@ -27,7 +47,4 @@ class Book < ApplicationRecord
     books = sort_by_rating(order)
     books.first(num)
   end
-
-
-
 end

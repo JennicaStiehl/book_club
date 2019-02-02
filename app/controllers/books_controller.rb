@@ -17,4 +17,8 @@ class BooksController < ApplicationController
       @top_3_books = Book.select_by_rating(order, num)
     end
   end
+
+  def show
+    @book = Book.first
+  end
 end
