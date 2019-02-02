@@ -85,4 +85,11 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     expect(page.all('.book-title')[1]).to have_content('Good Omens')
     expect(page.all('.book-title')[2]).to have_content('Harry Potter and the Sorcerer\'s Stone')
   end
+
+  it 'sees a navigation bar' do
+    visit books_path
+    
+    expect(page).to have_content('Home')
+    expect(page).to have_content('Books')
+  end
 end
