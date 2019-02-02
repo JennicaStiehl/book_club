@@ -14,6 +14,7 @@ class BooksController < ApplicationController
       @books = Book.sort_by_review_number_desc
     else
       @books = Book.all
+      @top_3_books = Book.top_3_rated_books
     end
   end
 end

@@ -75,10 +75,9 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
   describe "it see an area showing statistics about all books" do
 
     it "sees three of the highest-rated books (book title and rating score)" do
-      binding.pry
-      expect(page).to have_content(@book_1.title, @book_1.avg_rating)
+      expect(page).to have_content(@book_1.title, @book_1.avg_rating(@book_1.id))
       expect(page).to have_content("Statistics")
-      expect(page).to have_content(@book_2.title, @book_2.rating.rating)
+      expect(page).to have_content(@book_2.title, @book_2.rating.rating(@book_2.id))
     end
     it "three of the worst-rated books (book title and rating score)" do
     end
