@@ -42,12 +42,25 @@ RSpec.describe User, type: :model do
   end
 
   describe 'class methods' do
-    it "three users who have written the most reviews (user name and review count)" do
-      expect(User.most_reviews).to eq([@user_1, @user_2, @user_3])
-    end
   end
 
   describe 'instance methods' do
+    describe '.most_reviews' do
+      it "three users who have written the most reviews (user name and review count)" do
+        expect(User.most_reviews).to eq([@user_1, @user_2, @user_3])
+      end
+    end
 
+    describe'.sort_by_oldest' do
+      it 'returns an array of reviews for a user by timestamp, with the oldest reviews first' do
+        expect(@user_2.sort_by_oldest).to eq([@review_10, @review_4, @review_2])
+      end
+    end
+
+    describe '.sort_by_newest' do
+      it 'returns an array of reviews for a user by timestamp, with the newest reviews first' do
+        expect(@user_2.sort_by_newest).to eq([@review_2, @review_4, @review_10])
+      end
+    end
   end
 end

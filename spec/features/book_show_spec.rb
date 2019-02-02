@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
   before :each do
-    @author_1 = Author.create(name: 'Terry Pratchett')
-    @author_2 = Author.create(name: 'Neil Gaiman')
-    @book_1 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@author_1, @author_2])
+    @author_1 = Author.create(name: 'Mark Z. Danielewski')
+    @book_1 = Book.create(title: 'House of Leaves', pages: 709, year: 2000, authors: [@author_1])
     @user_1 = User.create(name: 'User 1')
     @user_2 = User.create(name: 'User 2')
     @user_3 = User.create(name: 'User 3')
@@ -38,7 +37,7 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
   it 'shows the top and bottom three reviews for the book as well as the average rating of all reviews' do
     #User Story 11
     visit book_path(@book_1.id)
-    save_and_open_page
+
     within(class: 'top-reviews') do
       expect(page).to have_content("Title: House of Leaves Review 5, Rating: 5 / 5, User: User 5")
       expect(page).to have_content("Title: House of Leaves Review 4, Rating: 4 / 5, User: User 4")
