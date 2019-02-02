@@ -6,6 +6,6 @@ class User < ApplicationRecord
         .left_outer_joins(:reviews)
         .group('users.id')
         .order("num_reviews desc")
+        .first(3)
   end
-  
 end

@@ -42,11 +42,17 @@ RSpec.describe Book, type: :model do
   end
 
   describe 'class methods' do
-    it "can find the #top_3_rated_books" do
-      expect(Book.select_by_rating(:desc, 3)).to eq([@book_2, @book_1, @book_3])
-      expect(Book.select_by_rating(:asc, 3)).to eq([@book_4, @book_3, @book_1])
+    describe '.top_by_rating' do
+      it 'returns the top three books by review rating' do
+        expect(Book.top_by_rating).to eq([@book_2, @book_1, @book_3])
+      end
     end
 
+    describe '.bottom_by_rating' do
+      it 'returns the bottom three books by review rating' do
+        expect(Book.bottom_by_rating).to eq([@book_4, @book_3, @book_1])
+      end
+    end
   end
 
   describe 'Instance Methods' do

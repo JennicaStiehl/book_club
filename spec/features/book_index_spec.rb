@@ -2,18 +2,32 @@ require 'rails_helper'
 
 RSpec.describe 'when visitor visits book index page', type: :feature do
   before :each do
-    @author_1 = Author.create(name: 'Mark Z. Danielewski')
-    @author_2 = Author.create(name: 'Terry Pratchett')
-    @author_3 = Author.create(name: 'Neil Gaiman')
-    @author_4 = Author.create(name: 'J. K. Rowling')
-    @book_1 = @author_1.books.create(title: 'House of Leaves', pages: 709, year: 2000)
-    @book_2 = Book.create(title: 'Good Omens', pages: 288, year: 1990, authors: [@author_2, @author_3])
-    @book_3 = @author_4.books.create(title: 'Harry Potter and the Sorcerer\'s Stone', pages: 309, year: 1998)
-    @user_1 = User.create(name: 'User 1')
-    @review_1 = Review.create(review_title: 'House of Leaves Review', text: "It was good.", rating: 3, book: @book_1, user: @user_1)
-    @user_2 = User.create(name: 'User 2')
-    @review_2 = Review.create(review_title: 'House of Leaves Review 2', text: 'It was great.', rating: 5, book: @book_1, user: @user_2)
-    @review_3 = Review.create(review_title: 'Good Omens Review', text: 'It was amazing.', rating: 5, book: @book_2, user: @user_2)
+    @author_1 = Author.create(name: "Gloria Stiehl")
+    @book_1 = Book.create(title: "new book", pages:20, year: 2019, authors: [@author_1])
+    @user_1 = User.create(name: "Joe")
+    @user_3 = User.create(name: "Josh")
+    @user_2 = User.create(name: "Jane")
+    @review_1 = @book_1.reviews.create(review_title: "terrible", rating: 3, text: "terrible and boring, too long.", user: @user_1)
+    @review_2 = @book_1.reviews.create(review_title: "LOL", rating: 5, text: "very fun; lots of laughs", user: @user_2)
+    @review_3 = @book_1.reviews.create(review_title: "stuff", rating: 4, text: "all the stuff", user: @user_3)
+
+    @author_2 = Author.create(name: "Gloria Estonia")
+    @book_2 = Book.create(title: "The only book you need", pages:20, year: 2019, authors: [@author_2])
+    @review_4 = @book_2.reviews.create(review_title: "ok", rating: 5, text: "not my thing", user: @user_2)
+    @review_5 = @book_2.reviews.create(review_title: "fun", rating: 5, text: "good times, good read", user: @user_1)
+    @review_6 = @book_2.reviews.create(review_title: "interesting", rating: 5, text: "when does the second book come out???", user: @user_1)
+
+    @author_3 = Author.create(name: "John Stone")
+    @book_3 = Book.create(title: "Intergalactic Voyage", pages:20, year: 2019, authors: [@author_3])
+    @review_7 = @book_3.reviews.create(review_title: "my review", rating: 1, text: "text", user: @user_1)
+    @review_8 = @book_3.reviews.create(review_title: "meh", rating: 3, text: "some text", user: @user_1)
+    @review_9 = @book_3.reviews.create(review_title: "leaves something to be desired", rating: 2, text: "more text and stuff", user: @user_1)
+
+    @author_3 = Author.create(name: "John Stone")
+    @book_4 = Book.create(title: "The first Voyage", pages:20, year: 2019, authors: [@author_3])
+    @review_10 = @book_4.reviews.create(review_title: "a", rating: 1, text: "a", user: @user_1)
+    @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
+    @review_12 = @book_4.reviews.create(review_title: "c", rating: 1, text: "c", user: @user_1)
   end
   it 'can see all titles and attributes of each book in the database' do
     #User Story 6
@@ -93,18 +107,31 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     expect(page).to have_content('Books')
   end
 
-# end
-# RSpec.describe 'When I visit the book index page', type: :feature do
-  describe "it see an area showing statistics about all books" do
+  describe "it sees an area showing statistics about all books" do
 
     it "sees three of the highest-rated books (book title and rating score)" do
-      expect(page).to have_content(@book_1.title, @book_1.avg_rating(@book_1.id))
-      expect(page).to have_content("Statistics")
-      expect(page).to have_content(@book_2.title, @book_2.rating.rating(@book_2.id))
+      visit books_path
+
+      within(class: "highest-rated") do
+        expect(page).to have_content(@book_2.title, "Rating: #{@book_2.average_rating} / 5")
+        expect(page).to have_content(@book_1.title, "Rating: #{@book_1.average_rating} / 5")
+      end
     end
     it "three of the worst-rated books (book title and rating score)" do
+      visit books_path
+
+      within(class: "lowest-rated") do
+        expect(page).to have_content(@book_4.title, "Rating: #{@book_4.average_rating} / 5")
+        expect(page).to have_content(@book_3.title, "Rating: #{@book_3.average_rating} / 5")
+      end
     end
     it "three users who have written the most reviews (user name and review count)" do
+      visit books_path
+
+      within(class: "top-users") do
+        expect(page).to have_content(@user_1.name, "Review Count: #{@user_1.reviews.count}")
+        expect(page).to have_content(@user_2.name, "Review Count: #{@user_2.reviews.count}")
+      end
     end
   end
 end

@@ -14,8 +14,10 @@ class BooksController < ApplicationController
       @books = Book.sort_by_review_number(order)
     else
       @books = Book.all
-      @top_3_books = Book.select_by_rating(order, num)
     end
+    @top_3_books = Book.top_by_rating
+    @bottom_3_books = Book.bottom_by_rating
+    @top_users = User.most_reviews
   end
 
   def show
