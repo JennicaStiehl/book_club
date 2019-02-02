@@ -50,7 +50,7 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
       expect(page).to have_content("Title: House of Leaves Review 3, Rating: 3 / 5, User: User 3")
     end
     within(class: 'average-rating') do
-      expect(page).to have_content('Average Score: 3.0')
+      expect(page).to have_content('Average Rating: 3.0')
     end
   end
 

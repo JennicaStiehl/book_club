@@ -16,7 +16,7 @@
   <% end %>
 </div>
 <div class='average-rating'>
-  <p>Average rating: <%= @book.average_rating %></p>
+  <p>Average Rating: <%= @book.average_rating %></p>
 </div>
 <% @book.reviews.each do |review| %>
   <div class="review-<%= review.id %>">
