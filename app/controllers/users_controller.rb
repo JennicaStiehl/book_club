@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.first
+    @user = User.find(params[:id])
     if params[:sort] == 'oldest'
       @reviews = @user.sort_by_oldest
     elsif params[:sort] == 'newest'
