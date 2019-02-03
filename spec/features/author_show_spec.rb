@@ -47,7 +47,6 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
   it 'displays one of the top reviews for each book (review title, score, and username)' do
     #User Story 15
     visit author_path(@author_1.id)
-    save_and_open_page
     within(class: "book-#{@book_1.id}") do
       expect(page).to have_content("Review Title: #{@review_1.review_title}")
       expect(page).to have_content("Rating: #{@review_1.rating} / 5")
