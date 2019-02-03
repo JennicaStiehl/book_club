@@ -30,4 +30,20 @@ class BooksController < ApplicationController
     Book.find(params[:id]).destroy
     redirect_to books_path
   end
+
+  def new
+    @book = Book.new
+  end
+
+  def create
+    authors = params[:book][:authors].split(', ')
+    authors.each do |author|
+      if Author.where(name: author) == []
+        Author.create(name: author)
+      end
+    end
+    authors = Author.where(name: authors)
+    Book.create(title: params[:book][:title], pages: params[:book][:pages], year: params[:book][:year], authors: authors)
+    redirect_to books_path
+  end
 end
