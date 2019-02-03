@@ -132,5 +132,20 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
         expect(page).to have_content(@user_2.name, "Review Count: #{@user_2.reviews.count}")
       end
     end
+
+    it "contains a link to create a new book" do
+      visit books_path
+      click_link('Add a Book')
+      fill_in 'Title', with: 'Title 1'
+      fill_in 'Authors', with: 'Author 1, Author 2'
+      fill_in 'Pages', with: 150
+      fill_in 'Year', with: 1990
+      click_on 'Submit'
+      save_and_open_page
+      expect(page).to have_current_path(books_path)
+      expect(page).to have_content('Title 1')
+      expect(page).to have_content("Author(s): Author 1, Author 2")
+      expect(page).to have_content(150)
+    end
   end
 end

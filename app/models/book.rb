@@ -30,7 +30,7 @@ class Book < ApplicationRecord
   end
 
   def self.sort_by_rating(order)
-    Book.select('books.*, avg(reviews.rating) as avg_rating')
+    Book.select('books.*, coalesce(avg(reviews.rating), 0) as avg_rating')
         .left_outer_joins(:reviews)
         .group('books.id')
         .order("avg_rating #{order}")
