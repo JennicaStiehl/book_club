@@ -2,63 +2,54 @@
 <head>
 </head>
 <body>
-  <%= link_to('Add a Book', new_book_path) %>
-  <div class="header">
-    <div><h2>All Books</h2></div>
-    <div class="stats">
-      <div class="highest-rated">
-        <h3>Highest Rated Books:</h3>
-        <% @top_3_books.each do |book| %>
-          <p> <%= book.title %> </p>
-          <p>Rating: <%= book.average_rating %> / 5</p>
+  <div id='book-index-grid'>
+    <div id='top-stats-grid'>
+      <div id='top-book-stats'>
+        <h3>Best Books:</h3>
+        <% @top_three_books.each do |book| %>
+          <h4><%= book.title %></h4>
+          <% if book.average_rating %>
+            <p>Average Rating: <%= book.average_rating %> / 5.0</p>
+          <% else %>
+            <p>Average Rating: None</p>
+          <% end %>
         <% end %>
       </div>
-      <div class="lowest-rated">
-        <h3>Lowest Rated Books:</h3>
-        <% @bottom_3_books.each do |book| %>
-          <p> <%= book.title %> </p>
-          <p>Rating: <%= book.average_rating %> / 5</p>
+      <div id='bottom-book-stats'>
+        <h3>Worst Books:</h3>
+        <% @bottom_three_books.each do |book| %>
+          <h4><%= book.title %></h4>
+          <% if book.average_rating %>
+            <p>Average Rating: <%= book.average_rating %> / 5.0</p>
+          <% else %>
+            <p>Average Rating: None</p>
+          <% end %>
         <% end %>
       </div>
-      <div class="top-users">
+      <div id='top-user-stats'>
         <h3>Top Users:</h3>
         <% @top_users.each do |user| %>
-          <p> <%= user.name %> </p>
-          <p>Review Count: <%= user.reviews.count %> </p>
+        <h4><%= user.name %></h4>
+        <p>Total Reviews: <%= user.reviews.count %></p>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="sorting-bar">
-    <div><p>Sort page by:</p></div>
-    <div class="sorting-links">
-      <div class="links-row-1">
-        <%= link_to('Pages (Ascending)', books_path(sort: :pages, order: :asc)) %>
-        <%= link_to('Pages (Descending)', books_path(sort: :pages_desc, order: :desc)) %>
-        <%= link_to('Rating (Ascending)', books_path(sort: :rating, order: :asc)) %>
+    <div id='sorting-grid'>
+      <p>Sort books by:</p>
+      <div id='sorting-bars'>
+        <div id='sorting-bar-1'>
+          <%= link_to('Pages (Ascending)', books_path(sort: :pages, order: :asc)) %>
+          <%= link_to('Rating (Ascending)', books_path(sort: :rating, order: :asc)) %>
+          <%= link_to('Reviews (Ascending)', books_path(sort: :review_number, order: :asc)) %>
+        </div>
+        <div id='sorting-bar-2'>
+          <%= link_to('Pages (Descending)', books_path(sort: :pages, order: :desc)) %>
+          <%= link_to('Rating (Descending)', books_path(sort: :rating, order: :desc)) %>
+          <%= link_to('Reviews (Descending)', books_path(sort: :review_number, order: :desc)) %>
+        </div>
       </div>
-      <div class = "links-row-2">
-        <%= link_to('Rating (Descending)', books_path(sort: :rating_desc, order: :desc)) %>
-        <%= link_to('Reviews (Ascending)', books_path(sort: :review_number, order: :asc)) %>
-        <%= link_to('Reviews (Descending)', books_path(sort: :review_number_desc, order: :desc)) %>
       </div>
     </div>
-  </div>
-  <div class="book-list">
-    <% @books.each do |book| %>
-       <div class="book-<%= book.id %>">
-          <h3 class='book-title'><%= book.title %></h3>
-        <div>
-          <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
-          <p>Pages: <%= book.pages %></p>
-          <p>Publication Year: <%= book.year %></p>
-        </div>
-        <div>
-          <p>Average Score: <%= book.average_rating %> </p>
-          <p>Number of Reviews: <%= book.reviews.count %> </p>
-        </div>
-      </div>
-    <% end %>
   </div>
 </body>
 </html>

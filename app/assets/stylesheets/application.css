@@ -44,13 +44,47 @@ body {
 
 #welcome-grid {
   display: grid;
-  grid-template-rows: 10vh, 5vh, 5vh, 5vh;
+  grid-template-rows: 10vh 5vh 5vh 5vh;
   text-align: center;
   background-color: white;
   border-radius: 10px;
   padding: 20px
 }
 
+#book-index-grid {
+  text-align: center
+}
+
+#top-stats-grid {
+  display: grid;
+  grid-template-columns: 33vw 33vw 33vw;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#sorting-grid {
+  display: grid;
+  grid-template-columns: 10vw 90vw;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px
+}
+
+#sorting-bars {
+  display: grid;
+  grid-template-rows: 5vh 5vh
+}
+
+#sorting-bar-1   {
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw
+}
+
+#sorting-bar-2 {
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw
+}
  /* .header {
    display: grid;
    grid-template-rows: 10vh 40vh;
