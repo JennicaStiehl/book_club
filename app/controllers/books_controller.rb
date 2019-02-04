@@ -25,7 +25,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Review.where(book_id: params[:id]).destroy_all
     AuthorBook.where(book_id: params[:id]).destroy_all
     Book.find(params[:id]).destroy
     redirect_to books_path

@@ -66,4 +66,14 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
       expect(page).to have_content("Username: #{@review_5.user.name}")
     end
   end
+
+  it 'has an option to delete the author' do
+    #User Story 20
+    visit author_path(@author_1.id)
+
+    click_link('Delete Author')
+
+    expect(current_path).to eq(books_path)
+    expect(page).to_not have_content("#{@author_1.name}")
+  end
 end
