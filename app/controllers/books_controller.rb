@@ -1,17 +1,17 @@
 class BooksController < ApplicationController
   def index
     if params[:sort] == 'pages'
-      @books = Book.sort_by_pages(order)
+      @books = Book.sort_by_pages(params[:order])
     elsif params[:sort] == 'pages_desc'
-      @books = Book.sort_by_pages(order)
+      @books = Book.sort_by_pages(params[:order])
     elsif params[:sort] == 'rating'
-      @books = Book.sort_by_rating(order)
+      @books = Book.sort_by_rating(params[:order])
     elsif params[:sort] == 'rating_desc'
-      @books = Book.sort_by_rating(order)
+      @books = Book.sort_by_rating(params[:order])
     elsif params[:sort] == 'review_number'
-      @books = Book.sort_by_review_number(order)
+      @books = Book.sort_by_review_number(params[:order])
     elsif params[:sort] == 'review_number_desc'
-      @books = Book.sort_by_review_number(order)
+      @books = Book.sort_by_review_number(params[:order])
     else
       @books = Book.all
     end
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.first
+    @book = Book.find(params[:id])
   end
 
   def destroy
@@ -36,14 +36,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    authors = params[:book][:authors].split(', ')
+    authors = params[:book][:authors].split(', ').map(&:titlecase)
     authors.each do |author|
-      if Author.where(name: author) == []
-        Author.create(name: author)
-      end
+      Author.create(name: author)
     end
     authors = Author.where(name: authors)
-    Book.create(title: params[:book][:title], pages: params[:book][:pages], year: params[:book][:year], authors: authors)
+    Book.create(title: params[:book][:title].titlecase, pages: params[:book][:pages], year: params[:book][:year], authors: authors)
     redirect_to books_path
   end
 end

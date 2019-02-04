@@ -47,7 +47,6 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
   it 'displays one of the top reviews for each book (review title, score, and username)' do
     #User Story 15
     visit author_path(@author_1.id)
-
     within(class: "book-#{@book_1.id}") do
       expect(page).to have_content("Review Title: #{@review_1.review_title}")
       expect(page).to have_content("Rating: #{@review_1.rating} / 5")
@@ -65,5 +64,17 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
       expect(page).to have_content("Rating: #{@review_5.rating} / 5")
       expect(page).to have_content("Username: #{@review_5.user.name}")
     end
+  end
+
+  it 'has an option to delete the author' do
+    #User Story 20
+    visit author_path(@author_1)
+
+    click_link('Delete Author')
+
+    expect(current_path).to eq(books_path)
+    expect(page).to have_content("Review Count: 0")
+    expect(page).to_not have_content("#{@author_1.name}")
+    expect(page).to_not have_content("#{@book_2.title}")
   end
 end

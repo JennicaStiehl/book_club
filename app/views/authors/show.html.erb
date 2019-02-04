@@ -1,5 +1,5 @@
 <h1><%= @author.name %></h1>
-
+<%= link_to('Delete Author', author_path(@author), method: :delete) %>
 <% @author.books.each do |book| %>
   <div class="book-<%= book.id %>">
     <h3><%= book.title %></h3>
@@ -7,8 +7,15 @@
     <p>Pages: <%= book.pages %> </p>
     <p>Coauthor(s): <%= book.coauthors(@author).map {|author| author.name}.join(", ") %></p>
     <h3>Top Review:</h3>
-    <p>Review Title: <%= book.top_review.review_title %> </p>
-    <p>Rating: <%= book.top_review.rating %> / 5</p>
-    <p>Username: <%= book.top_review.user.name %> </p>
+    <% case book.top_review %>
+    <% when nil %>
+      <p>Review Title: None</p>
+      <p>Rating: None</p>
+      <p>Username: None</p>
+    <% else %>
+      <p>Review Title: <%= book.top_review.review_title %> </p>
+      <p>Rating: <%= book.top_review.rating %> / 5</p>
+      <p>Username: <%= book.top_review.user.name %> </p>
+    <% end %>
   </div>
 <% end %>
