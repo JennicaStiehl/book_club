@@ -21,8 +21,8 @@ body {
 }
 
 .navbar{
-  color:white;
-  background-color:navy;
+  color:#e5efff;
+  background-color:dodgerblue;
   border-radius: 10px;
 }
 
@@ -36,19 +36,51 @@ body {
 }
 
 .navbar a{
-  color:white;
+  color:#e5efff;
   text-decoration: none;
   font-size: 18px;
   padding-right: 15px;
 }
 
+.book-grid {
+  display: grid;
+  grid-template-columns: 20vw 39vw 38.5vw;
+  background-color: #e5efff;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
+}
+
+.book-title-image {
+  border-radius: 10px 0px 0px 10px
+}
+
+.book-info {
+  display: grid;
+}
+
+.book-stats {
+  display: grid;
+  border-radius: 0px 10px 10px 0px
+}
+
+/* .book-list > div:nth-child(even){
+  background-color: #84D2F6;
+} */
+
 #welcome-grid {
   display: grid;
-  grid-template-rows: 10vh 5vh 5vh 5vh;
+  grid-template-rows: 15vh 5vh 10vh 10vh;
   text-align: center;
-  background-color: white;
+  background-color: #e5efff;
   border-radius: 10px;
-  padding: 20px
+  padding: 20px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
 }
 
 #book-index-grid {
@@ -58,17 +90,23 @@ body {
 #top-stats-grid {
   display: grid;
   grid-template-columns: 33vw 33vw 33vw;
-  background-color: white;
+  background-color: #e5efff;
   border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
 }
 
 #sorting-grid {
   display: grid;
   grid-template-columns: 10vw 90vw;
-  background-color: white;
+  background-color: #e5efff;
   border-radius: 10px;
   margin: 5px;
-  padding: 5px
+  padding: 5px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
 }
 
 #sorting-bars {
@@ -85,6 +123,12 @@ body {
   display: grid;
   grid-template-columns: 30vw 30vw 30vw
 }
+
+#default-image {
+  height: 100px;
+  width: 75px;
+}
+
  /* .header {
    display: grid;
    grid-template-rows: 10vh 40vh;

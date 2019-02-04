@@ -48,8 +48,28 @@
           <%= link_to('Reviews (Descending)', books_path(sort: :review_number, order: :desc)) %>
         </div>
       </div>
-      </div>
     </div>
+    <% @books.each do |book| %>
+      <div class='book-grid'>
+        <div class='book-title-image' id="book-<%= "#{book.id}" %>-title-image">
+          <h3><%= book.title %></h3>
+          <img id='default-image' src="https://i.pinimg.com/originals/fb/ab/7a/fbab7ad8cf7c407c40a66a7fafd4c933.png" alt="default-book">
+        </div>
+        <div class='book-info' id="book-<%= "#{book.id}" %>-info">
+          <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
+          <p>Pages: <%= book.pages %> </p>
+          <p>Year of Publication: <%= book.year %></p>
+        </div>
+        <div class=book-stats id="book-<%= "#{book.id}" %>-stats">
+          <% if book.average_rating %>
+            <p>Average Rating: <%= book.average_rating %> / 5.0</p>
+          <% else %>
+            <p>Average Rating: None</p>
+          <% end %>
+          <p>Total Reviews: <%= book.reviews.count %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
 </body>
 </html>
