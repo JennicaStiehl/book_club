@@ -34,14 +34,14 @@
     <div><p>Sort page by:</p></div>
     <div class="sorting-links">
       <div class="links-row-1">
-        <%= link_to('Pages (Ascending)', books_path(sort: :pages)) %>
-        <%= link_to('Pages (Descending)', books_path(sort: :pages_desc)) %>
-        <%= link_to('Rating (Ascending)', books_path(sort: :rating)) %>
+        <%= link_to('Pages (Ascending)', books_path(sort: :pages, order: :asc)) %>
+        <%= link_to('Pages (Descending)', books_path(sort: :pages_desc, order: :desc)) %>
+        <%= link_to('Rating (Ascending)', books_path(sort: :rating, order: :asc)) %>
       </div>
       <div class = "links-row-2">
-        <%= link_to('Rating (Descending)', books_path(sort: :rating_desc)) %>
-        <%= link_to('Reviews (Ascending)', books_path(sort: :review_number)) %>
-        <%= link_to('Reviews (Descending)', books_path(sort: :review_number_desc)) %>
+        <%= link_to('Rating (Descending)', books_path(sort: :rating_desc, order: :desc)) %>
+        <%= link_to('Reviews (Ascending)', books_path(sort: :review_number, order: :asc)) %>
+        <%= link_to('Reviews (Descending)', books_path(sort: :review_number_desc, order: :desc)) %>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
           <p>Publication Year: <%= book.year %></p>
         </div>
         <div>
-          <p>Average Score: <%= book.reviews.average(:rating) %> </p>
+          <p>Average Score: <%= book.average_rating %> </p>
           <p>Number of Reviews: <%= book.reviews.count %> </p>
         </div>
       </div>
