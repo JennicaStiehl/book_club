@@ -13,20 +13,86 @@
  *= require_tree .
  *= require_self
  */
- .navbar{
-   color:white;
-   background-color:navy;
+body {
+  background-image: url(https://cdn-images-1.medium.com/max/1600/0*Ugp4QQOB6XvJwi-L);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.navbar{
+  color:white;
+  background-color:navy;
+  border-radius: 10px;
+}
+
+.navbar ul{
+  padding:1%;
+  list-style: none;
+}
+
+.navbar li{
+  display: inline;
+}
+
+.navbar a{
+  color:white;
+  text-decoration: none;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+#welcome-grid {
+  display: grid;
+  grid-template-rows: 10vh, 5vh, 5vh, 5vh;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px
+}
+
+ /* .header {
+   display: grid;
+   grid-template-rows: 10vh 40vh;
+   text-align: center;
+   background-color: #00487C
  }
- .navbar ul{
-   padding:1%;
-   list-style: none;
+
+ .stats {
+   display: grid;
+   grid-template-columns: 33vw 33vw 33vw;
  }
- .navbar li{
-   display: inline;
+
+ .sorting-bar {
+   display: grid;
+   grid-template-columns: 10vw 90vw;
+   text-align: center;
  }
- .navbar a{
-   color:white;
-   text-decoration: none;
-   font-size: 18px;
-   padding-right: 15px;
+
+ .sorting-links {
+   display: grid;
+   grid-template-rows: 5vh 5vh
  }
+
+ .links-row-1 {
+   display: grid;
+   grid-template-columns: 30vw 30vw 30vw;
+ }
+
+ .links-row-2 {
+   display: grid;
+   grid-template-columns: 30vw 30vw 30vw;
+ }
+
+ .book {
+   display: grid;
+   grid-template-columns: 30vw 35vw 35vw
+ }
+
+ .book-list > div:nth-child(odd){
+   background-color: #59A5D8;
+ }
+
+ .book-list > div:nth-child(even){
+   background-color: #84D2F6;
+ } */
