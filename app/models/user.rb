@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, :dependent => :delete_all
   validates_uniqueness_of :name
 
   def self.most_reviews

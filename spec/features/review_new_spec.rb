@@ -23,7 +23,7 @@ RSpec.describe 'when visitor visits reviews new page', type: :feature do
     @review_8 = @book_3.reviews.create(review_title: "meh", rating: 3, text: "some text", user: @user_1)
     @review_9 = @book_3.reviews.create(review_title: "leaves something to be desired", rating: 2, text: "more text and stuff", user: @user_1)
 
-    @author_3 = Author.create(name: "John Stone")
+    @author_4 = Author.create(name: "John Stone")
     @book_4 = Book.create(title: "The first Voyage", pages:20, year: 2019, authors: [@author_3])
     @review_10 = @book_4.reviews.create(review_title: "a", rating: 1, text: "a", user: @user_1)
     @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
@@ -32,7 +32,7 @@ RSpec.describe 'when visitor visits reviews new page', type: :feature do
   describe 'On this new page, I see a form where I can enter review info' do
     it 'sees a review title' do
       visit new_book_review_path(@book_1.id)
-      save_and_open_page
+
       fill_in 'Review title', with: 'I love Rails!'
       fill_in 'User', with: 'benfolds5'
       fill_in 'Rating', with: 5
