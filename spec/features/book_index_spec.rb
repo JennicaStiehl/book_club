@@ -24,7 +24,7 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     @review_9 = @book_3.reviews.create(review_title: "leaves something to be desired", rating: 2, text: "more text and stuff", user: @user_1)
     @review_10 = @book_3.reviews.create(review_title: "a", rating: 1, text: "a", user: @user_1)
 
-    @author_3 = Author.create(name: "John Stone")
+    @author_4 = Author.create(name: "John Stone")
     @book_4 = Book.create(title: "The first Voyage", pages:40, year: 2019, authors: [@author_3])
     @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
   end
@@ -134,16 +134,17 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     it "contains a link to create a new book" do
       visit books_path
       click_link('Add a Book')
-      fill_in 'Title', with: 'Title 1'
-      fill_in 'Authors', with: 'Author 1, Author 2'
+      fill_in 'Title', with: 'my book'
+      fill_in 'Authors', with: 'john smith, gloria stiehl'
       fill_in 'Pages', with: 150
       fill_in 'Year', with: 1990
       click_on 'Submit'
 
       expect(page).to have_current_path(books_path)
-      expect(page).to have_content('Title 1')
-      expect(page).to have_content("Author(s): Author 1, Author 2")
+      expect(page).to have_content('My Book')
+      expect(page).to have_content("Author(s): #{@author_1.name}, John Smith")
       expect(page).to have_content(150)
+      expect(page).to have_content(1990)
     end
   end
 end

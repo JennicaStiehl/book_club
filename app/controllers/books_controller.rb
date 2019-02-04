@@ -36,14 +36,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    authors = params[:book][:authors].split(', ')
+    authors = params[:book][:authors].split(', ').map(&:titlecase)
     authors.each do |author|
-      if Author.where(name: author) == []
-        Author.create(name: author)
-      end
+      Author.create(name: author)
     end
     authors = Author.where(name: authors)
-    Book.create(title: params[:book][:title], pages: params[:book][:pages], year: params[:book][:year], authors: authors)
+    Book.create(title: params[:book][:title].titlecase, pages: params[:book][:pages], year: params[:book][:year], authors: authors)
     redirect_to books_path
   end
 end
