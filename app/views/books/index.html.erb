@@ -35,13 +35,13 @@
     <div class="sorting-links">
       <div class="links-row-1">
         <%= link_to('Pages (Ascending)', books_path(sort: :pages, order: :asc)) %>
-        <%= link_to('Pages (Descending)', books_path(sort: :pages_desc, order: :desc)) %>
+        <%= link_to('Pages (Descending)', books_path(sort: :pages, order: :desc)) %>
         <%= link_to('Rating (Ascending)', books_path(sort: :rating, order: :asc)) %>
       </div>
       <div class = "links-row-2">
-        <%= link_to('Rating (Descending)', books_path(sort: :rating_desc, order: :desc)) %>
+        <%= link_to('Rating (Descending)', books_path(sort: :rating, order: :desc)) %>
         <%= link_to('Reviews (Ascending)', books_path(sort: :review_number, order: :asc)) %>
-        <%= link_to('Reviews (Descending)', books_path(sort: :review_number_desc, order: :desc)) %>
+        <%= link_to('Reviews (Descending)', books_path(sort: :review_number, order: :desc)) %>
       </div>
     </div>
   </div>
