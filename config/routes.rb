@@ -6,6 +6,7 @@ root  'welcome#index'
     resources :reviews
   end
   resources :authors
-  resources :books
-  resources :reviews
+  resources :books do
+    resources :reviews
+  end
 end
