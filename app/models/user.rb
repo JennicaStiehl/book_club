@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :reviews
+  validates_uniqueness_of :name
 
   def self.most_reviews
     User.select('users.*, count(reviews.id) as num_reviews')

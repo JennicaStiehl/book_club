@@ -43,10 +43,10 @@ class Book < ApplicationRecord
         .order("num_rating #{order}")
   end
 
-  def self.select_by_rating(order, num)
-    books = sort_by_rating(order)
-    books.first(num)
-  end
+  # def self.select_by_rating(order, num)
+  #   books = sort_by_rating(order)
+  #   books.first(num)
+  # end
 
   def self.top_by_rating
     sort_by_rating(:desc).first(3)
