@@ -56,10 +56,18 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
   it 'has an option to delete each book' do
     visit book_path(@book_1.id)
     click_link('Delete Book')
-    save_and_open_page
+
     expect(current_path).to eq(books_path)
     expect(page).to_not have_content("#{@book_1.title}")
     expect(page).to_not have_content("Rating: 3.0 / 5")
+  end
+
+  it 'has an option to add a review' do
+    visit book_path(@book_1.id)
+    click_link('Add Review')
+
+    expect(current_path).to eq(new_review_path(@book_1.id))
+    expect(page).to have_content('Add Review')
   end
 
 end
