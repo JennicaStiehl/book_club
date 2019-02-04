@@ -1,7 +1,7 @@
 
 .header {
   display: grid;
-  grid-template-rows: 10vh 15vh;
+  grid-template-rows: 10vh 40vh;
   text-align: center;
   background-color: #00487C
 }
@@ -21,7 +21,7 @@
 
 .sorting-links {
   display: grid;
-  grid-template-rows: 5vh;
+  grid-template-rows: 5vh 5vh
 }
 
 .links-row-1 {
