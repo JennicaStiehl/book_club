@@ -2,15 +2,9 @@ class BooksController < ApplicationController
   def index
     if params[:sort] == 'pages'
       @books = Book.sort_by_pages(params[:order])
-    elsif params[:sort] == 'pages_desc'
-      @books = Book.sort_by_pages(params[:order])
     elsif params[:sort] == 'rating'
       @books = Book.sort_by_rating(params[:order])
-    elsif params[:sort] == 'rating_desc'
-      @books = Book.sort_by_rating(params[:order])
     elsif params[:sort] == 'review_number'
-      @books = Book.sort_by_review_number(params[:order])
-    elsif params[:sort] == 'review_number_desc'
       @books = Book.sort_by_review_number(params[:order])
     else
       @books = Book.all
