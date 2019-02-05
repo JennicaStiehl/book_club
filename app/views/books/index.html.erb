@@ -7,7 +7,7 @@
       <div id='top-book-stats'>
         <h3>Best Books:</h3>
         <% @top_three_books.each do |book| %>
-          <h4><%= book.title %></h4>
+          <%= link_to("#{book.title}", book_path(book), class: 'links') %>
           <% if book.average_rating %>
             <p>Average Rating: <%= book.average_rating %> / 5.0</p>
           <% else %>
@@ -18,7 +18,7 @@
       <div id='bottom-book-stats'>
         <h3>Worst Books:</h3>
         <% @bottom_three_books.each do |book| %>
-          <h4><%= book.title %></h4>
+        <%= link_to("#{book.title}", book_path(book), class: 'links') %>
           <% if book.average_rating %>
             <p>Average Rating: <%= book.average_rating %> / 5.0</p>
           <% else %>
@@ -29,7 +29,7 @@
       <div id='top-user-stats'>
         <h3>Top Users:</h3>
         <% @top_users.each do |user| %>
-        <h4><%= user.name %></h4>
+        <%= link_to("#{user.name}", user_path(user), class: 'links') %>
         <p>Total Reviews: <%= user.reviews.count %></p>
         <% end %>
       </div>
@@ -38,25 +38,27 @@
       <p>Sort books by:</p>
       <div id='sorting-bars'>
         <div id='sorting-bar-1'>
-          <%= link_to('Pages (Ascending)', books_path(sort: :pages, order: :asc)) %>
-          <%= link_to('Rating (Ascending)', books_path(sort: :rating, order: :asc)) %>
-          <%= link_to('Reviews (Ascending)', books_path(sort: :review_number, order: :asc)) %>
+          <%= link_to('Pages (Ascending)', books_path(sort: :pages, order: :asc), class: 'links') %>
+          <%= link_to('Rating (Ascending)', books_path(sort: :rating, order: :asc), class: 'links') %>
+          <%= link_to('Reviews (Ascending)', books_path(sort: :review_number, order: :asc), class: 'links') %>
         </div>
         <div id='sorting-bar-2'>
-          <%= link_to('Pages (Descending)', books_path(sort: :pages, order: :desc)) %>
-          <%= link_to('Rating (Descending)', books_path(sort: :rating, order: :desc)) %>
-          <%= link_to('Reviews (Descending)', books_path(sort: :review_number, order: :desc)) %>
+          <%= link_to('Pages (Descending)', books_path(sort: :pages, order: :desc), class: 'links') %>
+          <%= link_to('Rating (Descending)', books_path(sort: :rating, order: :desc), class: 'links') %>
+          <%= link_to('Reviews (Descending)', books_path(sort: :review_number, order: :desc), class: 'links') %>
         </div>
       </div>
     </div>
     <% @books.each do |book| %>
       <div class='book-grid'>
         <div class='book-title-image' id="book-<%= "#{book.id}" %>-title-image">
-          <h3><%= book.title %></h3>
+          <%= link_to("#{book.title}", book_path(book), class: 'links') %>
           <img id='default-image' src="https://i.pinimg.com/originals/fb/ab/7a/fbab7ad8cf7c407c40a66a7fafd4c933.png" alt="default-book">
         </div>
         <div class='book-info' id="book-<%= "#{book.id}" %>-info">
-          <p>Author(s): <%= book.authors.map {|author| author.name}.join(", ") %></p>
+        <p>Author(s): <% book.authors.each do |author| %>
+            <%= link_to("#{author.name}", author_path(author), class: 'links') %>
+          <% end %></p>
           <p>Pages: <%= book.pages %> </p>
           <p>Year of Publication: <%= book.year %></p>
         </div>

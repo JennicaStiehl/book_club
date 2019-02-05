@@ -54,7 +54,9 @@ body {
   border-width: 5px
 }
 
+
 .book-title-image {
+  display: grid;
   border-radius: 10px 0px 0px 10px
 }
 
@@ -67,13 +69,13 @@ body {
   border-radius: 0px 10px 10px 0px
 }
 
-/* .book-list > div:nth-child(even){
-  background-color: #84D2F6;
-} */
+.links {
+  font-weight: bold
+}
 
 #welcome-grid {
   display: grid;
-  grid-template-rows: 15vh 5vh 10vh 10vh;
+  grid-template-rows: 15vh 10vh 10vh 10vh;
   text-align: center;
   background-color: #e5efff;
   border-radius: 10px;
@@ -83,8 +85,18 @@ body {
   border-width: 5px
 }
 
+#enter {
+  font-weight: bold;
+  font-size: 18pt
+}
+
+#welcome-links {
+  display: grid;
+  grid-template-columns: 20vw 15vw 15vw 15vw 15vw 20vw
+}
+
 #book-index-grid {
-  text-align: center
+  text-align: center;
 }
 
 #top-stats-grid {
@@ -127,50 +139,7 @@ body {
 #default-image {
   height: 100px;
   width: 75px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-
- /* .header {
-   display: grid;
-   grid-template-rows: 10vh 40vh;
-   text-align: center;
-   background-color: #00487C
- }
-
- .stats {
-   display: grid;
-   grid-template-columns: 33vw 33vw 33vw;
- }
-
- .sorting-bar {
-   display: grid;
-   grid-template-columns: 10vw 90vw;
-   text-align: center;
- }
-
- .sorting-links {
-   display: grid;
-   grid-template-rows: 5vh 5vh
- }
-
- .links-row-1 {
-   display: grid;
-   grid-template-columns: 30vw 30vw 30vw;
- }
-
- .links-row-2 {
-   display: grid;
-   grid-template-columns: 30vw 30vw 30vw;
- }
-
- .book {
-   display: grid;
-   grid-template-columns: 30vw 35vw 35vw
- }
-
- .book-list > div:nth-child(odd){
-   background-color: #59A5D8;
- }
-
- .book-list > div:nth-child(even){
-   background-color: #84D2F6;
- } */
