@@ -5,7 +5,7 @@
   <div id='book-show-grid'>
     <div id='book-show-header'>
       <div id='book-info'>
-        <%= link_to("#{@book.title}", book_path(@book), id: 'book-title') %>
+        <h3><%= @book.title %></h3>
         <img id='default-image' src="https://i.pinimg.com/originals/fb/ab/7a/fbab7ad8cf7c407c40a66a7fafd4c933.png" alt="default-book">
         <p>Author(s): <% @book.authors.each do |author| %>
           <%= link_to("#{author.name}", author_path(author), class: 'links') %>
@@ -21,14 +21,14 @@
           <% @book.top_reviews.each do |review| %>
             <h4>Title: <%= review.review_title %></h4>
             <p>Rating: <%= review.rating %> / 5</p>
-            <p>User: <%= review.user.name %></p>
+            <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
           <% end %>
         </div>
         <div><h3>Bottom Rated Reviews:</h3>
           <% @book.bottom_reviews.each do |review| %>
             <h4>Title: <%= review.review_title %></h4>
             <p>Rating: <%= review.rating %> / 5</p>
-            <p>User: <%= review.user.name %></p>
+            <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
             <% end %>
         </div>
       </div>
@@ -37,7 +37,7 @@
       <% @book.reviews.each do |review| %>
         <div class='book-review' id="book-review-<%= "#{review.id}" %>">
           <p>Title: <%= review.review_title %></p>
-          <p>User: <%= review.user.name %></p>
+          <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
           <p>Rating: <%= review.rating %> / 5</p>
           <p><%= review.text %></p>
         </div>

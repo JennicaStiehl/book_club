@@ -75,7 +75,7 @@ body {
 
 .book-review {
   display: grid;
-  grid-template-rows: 5vh 5vh 5vh auto;
+  grid-template-rows: 6vh 2vh 5vh auto;
   text-align: center;
   background-color: #e5efff;
   border-radius: 10px;
@@ -83,6 +83,18 @@ body {
   border-color: dodgerblue;
   border-width: 5px;
   margin: 5px
+}
+
+.author-book {
+  background-color: #e5efff;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 30vw 35vw 35vw;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  padding: 10px
 }
 
 #welcome-grid {
@@ -189,4 +201,14 @@ body {
 #book-title {
   font-size: 16pt;
   font-weight: bold;
+}
+
+#author-name {
+  background-color: #e5efff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
 }
