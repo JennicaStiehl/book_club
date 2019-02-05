@@ -29,8 +29,10 @@ RSpec.describe 'when visitor visits reviews new page', type: :feature do
     @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
     @review_12 = @book_4.reviews.create(review_title: "c", rating: 1, text: "c", user: @user_1)
   end
-  describe 'On this new page, I see a form where I can enter review info' do
-    it 'sees a review title' do
+  describe 'they see a form where they can enter review info' do
+    it 'and see that review displayed on the corresponding book show page' do
+      # User Story 13
+
       visit new_book_review_path(@book_1.id)
 
       fill_in 'review_review_title', with: 'I love Rails!'
@@ -41,10 +43,5 @@ RSpec.describe 'when visitor visits reviews new page', type: :feature do
       expect(page).to have_current_path(book_path(@book_1))
       expect(page).to have_content('I love Rails!')
     end
-
-
-
-
-
   end
 end

@@ -32,7 +32,8 @@
             <% end %>
         </div>
       </div>
-  </div>
+    </div>
+    <div id='new-item'><%= link_to('Add a Review', new_book_review_path(@book)) %></div>
     <div id='book-review-list'>
       <% @book.reviews.each do |review| %>
         <div class='book-review' id="book-review-<%= "#{review.id}" %>">
