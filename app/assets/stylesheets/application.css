@@ -13,20 +13,244 @@
  *= require_tree .
  *= require_self
  */
- .navbar{
-   color:white;
-   background-color:navy;
- }
- .navbar ul{
-   padding:1%;
-   list-style: none;
- }
- .navbar li{
-   display: inline;
- }
- .navbar a{
-   color:white;
-   text-decoration: none;
-   font-size: 18px;
-   padding-right: 15px;
- }
+body {
+  background-image: url(https://cdn-images-1.medium.com/max/1600/0*Ugp4QQOB6XvJwi-L);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.navbar{
+  color:#e5efff;
+  background-color:dodgerblue;
+  border-radius: 10px;
+}
+
+.navbar ul{
+  padding:1%;
+  list-style: none;
+}
+
+.navbar li{
+  display: inline;
+}
+
+.navbar a{
+  color:#e5efff;
+  text-decoration: none;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: 20vw 39vw 38.5vw;
+  background-color: #e5efff;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
+}
+
+
+.book-title-image {
+  display: grid;
+  border-radius: 10px 0px 0px 10px
+}
+
+.book-info {
+  display: grid;
+}
+
+.book-stats {
+  display: grid;
+  border-radius: 0px 10px 10px 0px
+}
+
+.links {
+  font-weight: bold
+}
+
+.book-review {
+  display: grid;
+  grid-template-rows: 7vh 2vh 5vh auto;
+  text-align: center;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  margin: 5px
+}
+
+.author-book {
+  background-color: #e5efff;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 30vw 35vw 35vw;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  padding: 10;
+  margin: 5px
+}
+
+.user-review {
+  display: grid;
+  grid-template-rows: 5vh 5vh 7vh 5vh;
+  text-align: center;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  margin: 5px
+}
+
+#welcome-grid {
+  display: grid;
+  grid-template-rows: 15vh 10vh 10vh 10vh;
+  text-align: center;
+  background-color: #e5efff;
+  border-radius: 10px;
+  padding: 20px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
+}
+
+#enter {
+  font-weight: bold;
+  font-size: 18pt
+}
+
+#welcome-links {
+  display: grid;
+  grid-template-columns: 20vw 15vw 15vw 15vw 15vw 20vw;
+}
+
+#book-index-grid {
+  text-align: center;
+  grid-template-columns: auto
+}
+
+#top-stats-grid {
+  display: grid;
+  grid-template-columns: 33vw 33vw 33vw;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
+}
+
+#sorting-grid {
+  display: grid;
+  grid-template-columns: 10vw 90vw;
+  background-color: #e5efff;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
+}
+
+#sorting-bars {
+  display: grid;
+  grid-template-rows: 5vh 5vh
+}
+
+#sorting-bar-1   {
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw
+}
+
+#sorting-bar-2 {
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw
+}
+
+#default-image {
+  height: 100px;
+  width: 75px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#book-show-grid {
+  display: grid;
+  grid-template-rows: auto
+}
+
+#book-show-header {
+  display: grid;
+  grid-template-columns: 30vw 69vw;
+  margin: 5px
+}
+
+#book-stats {
+  display: grid;
+  grid-template-columns: 35vw 35vw;
+  background-color: #e5efff;
+  border-top: outset dodgerblue 5px;
+  border-right: outset dodgerblue 5px;
+  border-bottom: outset dodgerblue 5px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#book-info {
+  text-align: center;
+  background-color: #e5efff;
+  border-top: outset dodgerblue 5px;
+  border-left: outset dodgerblue 5px;
+  border-bottom: outset dodgerblue 5px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+#book-title {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+#user-author-title {
+  background-color: #e5efff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px
+}
+
+#review-sorting {
+  display: grid;
+  grid-template-columns: 40vw 10vw 10vw 40vw;
+  text-align: center;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  padding: 10px
+}
+
+#user-sorting-links {
+  display: grid;
+  grid-template-rows: 5vh 5vh
+}
+
+#new-book {
+  text-align: center;
+  font-size: 16pt;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  padding: 10px
+}

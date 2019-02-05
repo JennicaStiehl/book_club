@@ -1,21 +1,38 @@
-<h1><%= @author.name %></h1>
-<%= link_to('Delete Author', author_path(@author), method: :delete) %>
-<% @author.books.each do |book| %>
-  <div class="book-<%= book.id %>">
-    <h3><%= book.title %></h3>
-    <p>Year of Publication: <%= book.year %></p>
-    <p>Pages: <%= book.pages %> </p>
-    <p>Coauthor(s): <%= book.coauthors(@author).map {|author| author.name}.join(", ") %></p>
-    <h3>Top Review:</h3>
-    <% case book.top_review %>
-    <% when nil %>
-      <p>Review Title: None</p>
-      <p>Rating: None</p>
-      <p>Username: None</p>
-    <% else %>
-      <p>Review Title: <%= book.top_review.review_title %> </p>
-      <p>Rating: <%= book.top_review.rating %> / 5</p>
-      <p>Username: <%= book.top_review.user.name %> </p>
+<html>
+<head>
+</head>
+<body>
+  <h1 id='user-author-title'> <%= @author.name %> </h1>
+  <div id='new-book'><%= link_to('Delete This Author', author_path(@author), method: :delete) %></div>
+  <div id='book-list'>
+    <% @author.books.each do |book| %>
+      <div class='author-book' id="book-<%= book.id %>">
+        <div class="author-title-image">
+          <%= link_to("#{book.title}", book_path(book), id: 'book-title') %>
+          <img id='default-image' src="https://i.pinimg.com/originals/fb/ab/7a/fbab7ad8cf7c407c40a66a7fafd4c933.png" alt="default-book">
+        </div>
+        <div class='author-book-info'>
+          <p>Coauthor(s): <% book.coauthors(@author).each do |coauthor| %>
+            <%= link_to("#{coauthor.name}", author_path(coauthor), class: 'links') %>
+            <% end %></p>
+          <p>Pages: <%= book.pages %> </p>
+          <p>Year of Publication: <%= book.year %></p>
+        </div>
+        <div class='book-top-review'>
+          <h3>Top Review:</h3>
+          <% case book.top_review %>
+          <% when nil %>
+            <p>Review Title: None</p>
+            <p>Rating: None</p>
+            <p>Username: None</p>
+          <% else %>
+            <p>Review Title: <%= book.top_review.review_title %> </p>
+            <p>Rating: <%= book.top_review.rating %> / 5</p>
+            <%= link_to("#{book.top_review.user.name}", user_path(book.top_review.user), class: 'links') %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
-<% end %>
+</body>
+</html>

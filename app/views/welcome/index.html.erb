@@ -1,6 +1,25 @@
-<h1>Book Club</h1>
-<h3>Developed by: Chris Lewis and Jennica Stiehl</h3>
-<a href="https://github.com/JennicaStiehl">GitHub: Jennica</a>
-<a href="https://github.com/csvlewis">GitHub: Chris Lewis</a>
+<html>
+<head>
+</head>
+<body>
+  <div id='welcome-grid'>
+    <h1>Welcome to Book Club!</h1>
+    <%= link_to('Click to Enter', books_path, id: 'enter') %>
+    <h3>Developed by: Chris Lewis and Jennica Stiehl</h3>
+    <div id='welcome-links'>
+      <div></div>
+      <%= link_to("Jennica's GitHub", 'https://github.com/JennicaStiehl', class: 'links') %>
+      <%= link_to("Chris's GitHub", 'https://github.com/csvlewis', class: 'links') %>
+      <%= link_to('GitHub Project Page', 'https://github.com/JennicaStiehl/book_club', class: 'links') %>
+      <%= link_to('Waffle Project Page', 'https://waffle.io/JennicaStiehl/book_club', class: 'links') %>
+      <div></div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+<!-- <a href="https://github.com/JennicaStiehl">Jennica's GitHub</a>
+<a href="https://github.com/csvlewis">Chris's GitHub</a>
 <a href="https://github.com/JennicaStiehl/book_club">GitHub Project Page</a>
-<a href="https://waffle.io/JennicaStiehl/book_club">Waffle Project Page</a>
+<a href="https://waffle.io/JennicaStiehl/book_club">Waffle Project Page</a> -->

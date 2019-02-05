@@ -11,34 +11,45 @@ RSpec.describe 'when visitor visits a user\'s show page', type: :feature do
   end
 
   it 'displays all reviews by that user, each with a title, rating and text' do
+    # User Story 16
+
     visit user_path(@user_1.id)
-    within(class: "review-#{@review_1.id}") do
-      expect(page).to have_content("Title: #{@review_1.review_title}")
+
+    within(id: "user-review-#{@review_1.id}") do
+      expect(page).to have_content("#{@review_1.review_title}")
       expect(page).to have_content("Rating: #{@review_1.rating} / 5")
-      expect(page).to have_content("Review: #{@review_1.text}")
+      expect(page).to have_content("#{@review_1.text}")
     end
   end
 
   it 'has options to sort the page\'s reviews by age' do
+    # User Story 17
+
     visit user_path(@user_1.id)
+
     click_link('Oldest')
-    expect(page.all('.title')[0]).to have_content("Title: #{@review_3.review_title}")
-    expect(page.all('.title')[1]).to have_content("Title: #{@review_2.review_title}")
-    expect(page.all('.title')[2]).to have_content("Title: #{@review_1.review_title}")
+
+    expect(page.all('.title')[0]).to have_content("#{@review_3.review_title}")
+    expect(page.all('.title')[1]).to have_content("#{@review_2.review_title}")
+    expect(page.all('.title')[2]).to have_content("#{@review_1.review_title}")
 
     click_link('Newest')
-    expect(page.all('.title')[0]).to have_content("Title: #{@review_1.review_title}")
-    expect(page.all('.title')[1]).to have_content("Title: #{@review_2.review_title}")
-    expect(page.all('.title')[2]).to have_content("Title: #{@review_3.review_title}")
+
+    expect(page.all('.title')[0]).to have_content("#{@review_1.review_title}")
+    expect(page.all('.title')[1]).to have_content("#{@review_2.review_title}")
+    expect(page.all('.title')[2]).to have_content("#{@review_3.review_title}")
   end
 
   it 'has an option to delete each review' do
+    # User Story 18
+
     visit user_path(@user_1.id)
-    expect(page).to have_content("Title: #{@review_1.review_title}")
-    within(class: "review-#{@review_1.id}") do
+
+    expect(page).to have_content("#{@review_1.review_title}")
+    within(id: "user-review-#{@review_1.id}") do
       click_link('Delete Review')
     end
 
-    expect(page).to_not have_content("Title: #{@review_1.review_title}")
+    expect(page).to_not have_content("#{@review_1.review_title}")
   end
 end

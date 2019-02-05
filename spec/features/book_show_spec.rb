@@ -16,46 +16,64 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
     @review_5 = Review.create(review_title: 'House of Leaves Review 5', text: 'It was amazing!', rating: 5, book: @book_1, user: @user_5)
   end
   it 'shows the book title, author(s), number of pages, and a list of reviews' do
-    #User Story 10
+    # User Story 10
     visit book_path(@book_1.id)
-    within(class: 'book-info') do
+
+    within(id: 'book-info') do
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content("Author(s): #{@book_1.authors.first.name}")
       expect(page).to have_content("Pages: #{@book_1.pages}")
     end
-    within(class: "review-#{@review_1.id}") do
-      expect(page).to have_content('House of Leaves Review')
-      expect(page).to have_content('I hated it.')
-      expect(page).to have_content('Rating: 1 / 5')
+    within(id: "book-review-#{@review_1.id}") do
+      expect(page).to have_content("#{@review_1.review_title}")
+      expect(page).to have_content("#{@review_1.user.name}")
+      expect(page).to have_content("Rating: #{@review_1.rating} / 5")
     end
-    within(class: "review-#{@review_2.id}") do
-      expect(page).to have_content('House of Leaves Review 2')
-      expect(page).to have_content('I didn\'t like it.')
-      expect(page).to have_content('Rating: 2 / 5')
+    within(id: "book-review-#{@review_2.id}") do
+      expect(page).to have_content("#{@review_2.review_title}")
+      expect(page).to have_content("#{@review_2.user.name}")
+      expect(page).to have_content("Rating: #{@review_2.rating} / 5")
     end
   end
   it 'shows the top and bottom three reviews for the book as well as the average rating of all reviews' do
-    #User Story 11
+    # User Story 11
     visit book_path(@book_1.id)
 
-    within(class: 'top-reviews') do
-      expect(page).to have_content("Title: House of Leaves Review 5, Rating: 5 / 5, User: User 5")
-      expect(page).to have_content("Title: House of Leaves Review 4, Rating: 4 / 5, User: User 4")
-      expect(page).to have_content("Title: House of Leaves Review 3, Rating: 3 / 5, User: User 3")
+    within(id: 'top-reviews') do
+      expect(page).to have_content("Title: #{@review_5.review_title}")
+      expect(page).to have_content("Rating: #{@review_5.rating} / 5")
+      expect(page).to have_content("#{@review_5.user.name}")
+
+      expect(page).to have_content("Title: #{@review_4.review_title}")
+      expect(page).to have_content("Rating: #{@review_4.rating} / 5")
+      expect(page).to have_content("#{@review_4.user.name}")
+
+      expect(page).to have_content("Title: #{@review_3.review_title}")
+      expect(page).to have_content("Rating: #{@review_3.rating} / 5")
+      expect(page).to have_content("#{@review_3.user.name}")
     end
-    within(class: 'bottom-reviews') do
-      expect(page).to have_content("Title: House of Leaves Review, Rating: 1 / 5, User: User 1")
-      expect(page).to have_content("Title: House of Leaves Review 2, Rating: 2 / 5, User: User 2")
-      expect(page).to have_content("Title: House of Leaves Review 3, Rating: 3 / 5, User: User 3")
+    within(id: 'bottom-reviews') do
+      expect(page).to have_content("Title: #{@review_1.review_title}")
+      expect(page).to have_content("Rating: #{@review_1.rating} / 5")
+      expect(page).to have_content("#{@review_1.user.name}")
+
+      expect(page).to have_content("Title: #{@review_2.review_title}")
+      expect(page).to have_content("Rating: #{@review_2.rating} / 5")
+      expect(page).to have_content("#{@review_2.user.name}")
+
+      expect(page).to have_content("Title: #{@review_3.review_title}")
+      expect(page).to have_content("Rating: #{@review_3.rating} / 5")
+      expect(page).to have_content("#{@review_3.user.name}")
     end
-    within(class: 'average-rating') do
+    within(id: 'book-info') do
       expect(page).to have_content('Average Rating: 3.0')
     end
   end
 
   it 'has an option to delete the book' do
+    # User Story 19
     visit book_path(@book_1.id)
-    click_link('Delete Book')
+    click_link('Delete This Book')
 
     expect(current_path).to eq(books_path)
     expect(page).to_not have_content("#{@book_1.title}")
