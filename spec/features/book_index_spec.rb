@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'when visitor visits book index page', type: :feature do
+RSpec.describe 'when visitor visits book index page it', type: :feature do
   before :each do
     @author_1 = Author.create(name: "Gloria Stiehl")
     @book_1 = Book.create(title: "new book", pages:10, year: 2019, authors: [@author_1])
@@ -28,123 +28,128 @@ RSpec.describe 'when visitor visits book index page', type: :feature do
     @book_4 = Book.create(title: "The first Voyage", pages:40, year: 2019, authors: [@author_3])
     @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
   end
-  it 'can see all titles and attributes of each book in the database' do
-    #User Story 6
+  it 'displays all titles and attributes of each book in the database' do
+    # User Story 6
 
     visit books_path
 
-    within(class: "book-#{@book_1.id}") do
-      expect(page).to have_content(@book_1.title)
+    within(id: "book-#{@book_1.id}-info") do
       expect(page).to have_content("Pages: #{@book_1.pages}")
-      expect(page).to have_content("Publication Year: #{@book_1.year}")
+      expect(page).to have_content("Year of Publication: #{@book_1.year}")
       expect(page).to have_content("Author(s): #{@book_1.authors.first.name}")
     end
-    within(class: "book-#{@book_2.id}") do
-      expect(page).to have_content(@book_2.title)
+    within(id: "book-#{@book_2.id}-info") do
       expect(page).to have_content("Pages: #{@book_2.pages}")
-      expect(page).to have_content("Publication Year: #{@book_2.year}")
-      expect(page).to have_content("Author(s): #{@book_2.authors.first.name}, #{@book_2.authors.second.name}")
+      expect(page).to have_content("Year of Publication: #{@book_2.year}")
+      expect(page).to have_content("Author(s): #{@book_2.authors.first.name} #{@book_2.authors.second.name}")
     end
   end
 
-  it 'can see average book rating and number of reviews' do
-    #User Story 7
+  it 'displays average book rating and number of reviews' do
+    # User Story 7
 
     visit books_path
 
-    within(class: "book-#{@book_1.id}") do
-      expect(page).to have_content("Average Score: #{@book_1.average_rating}")
-      expect(page).to have_content("Number of Reviews: #{@book_1.reviews.count}")
+    within(id: "book-#{@book_1.id}-stats") do
+      expect(page).to have_content("Average Rating: #{@book_1.average_rating} / 5.0")
+      expect(page).to have_content("Total Reviews: #{@book_1.reviews.count}")
     end
 
-    within(class: "book-#{@book_2.id}") do
-      expect(page).to have_content("Average Score: #{@book_2.average_rating}")
-      expect(page).to have_content("Number of Reviews: #{@book_2.reviews.count}")
+    within(id: "book-#{@book_2.id}-stats") do
+      expect(page).to have_content("Average Rating: #{@book_2.average_rating} / 5.0")
+      expect(page).to have_content("Total Reviews: #{@book_2.reviews.count}")
     end
   end
 
   it 'can sort the page by rating, pages, and reviews' do
-    #User Story 8
+    # User Story 8
+
     visit books_path
+
     click_link('Pages (Ascending)')
-    expect(page.all('.book-title')[0]).to have_content("#{@book_1.title}")
-    expect(page.all('.book-title')[1]).to have_content("#{@book_2.title}")
-    expect(page.all('.book-title')[2]).to have_content("#{@book_3.title}")
+
+    expect(page.all('.book-title-image')[0]).to have_content("#{@book_1.title}")
+    expect(page.all('.book-title-image')[1]).to have_content("#{@book_2.title}")
+    expect(page.all('.book-title-image')[2]).to have_content("#{@book_3.title}")
 
     click_link('Pages (Descending)')
-    expect(page.all('.book-title')[0]).to have_content("#{@book_4.title}")
-    expect(page.all('.book-title')[1]).to have_content("#{@book_3.title}")
-    expect(page.all('.book-title')[2]).to have_content("#{@book_2.title}")
+    expect(page.all('.book-title-image')[0]).to have_content("#{@book_4.title}")
+    expect(page.all('.book-title-image')[1]).to have_content("#{@book_3.title}")
+    expect(page.all('.book-title-image')[2]).to have_content("#{@book_2.title}")
 
     click_link('Rating (Ascending)')
-    expect(page.all('.book-title')[0]).to have_content("#{@book_4.title}")
-    expect(page.all('.book-title')[1]).to have_content("#{@book_3.title}")
-    expect(page.all('.book-title')[2]).to have_content("#{@book_1.title}")
+    expect(page.all('.book-title-image')[0]).to have_content("#{@book_4.title}")
+    expect(page.all('.book-title-image')[1]).to have_content("#{@book_3.title}")
+    expect(page.all('.book-title-image')[2]).to have_content("#{@book_1.title}")
 
     click_link('Rating (Descending)')
-    expect(page.all('.book-title')[0]).to have_content("#{@book_2.title}")
-    expect(page.all('.book-title')[1]).to have_content("#{@book_1.title}")
-    expect(page.all('.book-title')[2]).to have_content("#{@book_3.title}")
+    expect(page.all('.book-title-image')[0]).to have_content("#{@book_2.title}")
+    expect(page.all('.book-title-image')[1]).to have_content("#{@book_1.title}")
+    expect(page.all('.book-title-image')[2]).to have_content("#{@book_3.title}")
 
     click_link('Reviews (Ascending)')
-    expect(page.all('.book-title')[0]).to have_content("#{@book_4.title}")
-    expect(page.all('.book-title')[1]).to have_content("#{@book_1.title}")
-    expect(page.all('.book-title')[2]).to have_content("#{@book_2.title}")
+    expect(page.all('.book-title-image')[0]).to have_content("#{@book_4.title}")
+    expect(page.all('.book-title-image')[1]).to have_content("#{@book_1.title}")
+    expect(page.all('.book-title-image')[2]).to have_content("#{@book_2.title}")
 
     click_link('Reviews (Descending)')
-    expect(page.all('.book-title')[0]).to have_content("#{@book_3.title}")
-    expect(page.all('.book-title')[1]).to have_content("#{@book_2.title}")
-    expect(page.all('.book-title')[2]).to have_content("#{@book_1.title}")
+    expect(page.all('.book-title-image')[0]).to have_content("#{@book_3.title}")
+    expect(page.all('.book-title-image')[1]).to have_content("#{@book_2.title}")
+    expect(page.all('.book-title-image')[2]).to have_content("#{@book_1.title}")
   end
 
-  it 'sees a navigation bar' do
+  it 'displays a navigation bar' do
+    # User Story 2
     visit books_path
 
     expect(page).to have_content('Home')
     expect(page).to have_content('Books')
   end
 
-  describe "it sees an area showing statistics about all books" do
-
-    it "sees three of the highest-rated books (book title and rating score)" do
+  describe "displays an area with statistics about all books" do
+    # User Story 9
+    it "with three of the highest-rated books (book title and rating score)" do
       visit books_path
 
-      within(class: "highest-rated") do
+      within(id: 'top-book-stats') do
         expect(page).to have_content(@book_2.title, "Rating: #{@book_2.average_rating} / 5")
         expect(page).to have_content(@book_1.title, "Rating: #{@book_1.average_rating} / 5")
       end
     end
-    it "three of the worst-rated books (book title and rating score)" do
+    it "with three of the worst-rated books (book title and rating score)" do
       visit books_path
 
-      within(class: "lowest-rated") do
+      within(id: 'bottom-book-stats') do
         expect(page).to have_content(@book_4.title, "Rating: #{@book_4.average_rating} / 5")
         expect(page).to have_content(@book_3.title, "Rating: #{@book_3.average_rating} / 5")
       end
     end
-    it "three users who have written the most reviews (user name and review count)" do
+    it "with the three users who have written the most reviews (user name and review count)" do
       visit books_path
 
-      within(class: "top-users") do
-        expect(page).to have_content(@user_1.name, "Review Count: #{@user_1.reviews.count}")
-        expect(page).to have_content(@user_2.name, "Review Count: #{@user_2.reviews.count}")
+      within(id: "top-user-stats") do
+        expect(page).to have_content(@user_1.name, "Total Reviews: #{@user_1.reviews.count}")
+        expect(page).to have_content(@user_2.name, "Total Reviews: #{@user_2.reviews.count}")
       end
     end
 
-    it "contains a link to create a new book" do
-      visit books_path
-      click_link('Add a Book')
-      fill_in 'Title', with: 'my book'
-      fill_in 'Authors', with: 'john smith, gloria stiehl'
-      fill_in 'Pages', with: 150
-      fill_in 'Year', with: 1990
-      click_on 'Submit'
+  end
+  it "has a link to create a new book" do
+    # User Story 12
 
-      expect(page).to have_current_path(books_path)
-      expect(page).to have_content('My Book')
-      expect(page).to have_content("Author(s): #{@author_1.name}, John Smith")
-      expect(page).to have_content(150)
-      expect(page).to have_content(1990)
-    end
+    visit books_path
+
+    click_link('Add a Book')
+    fill_in 'Title', with: 'my book'
+    fill_in 'Authors', with: 'john smith, gloria stiehl'
+    fill_in 'Pages', with: 150
+    fill_in 'Year', with: 1990
+    click_on 'Submit'
+
+    expect(page).to have_current_path(books_path)
+    expect(page).to have_content('My Book')
+    expect(page).to have_content("Author(s): #{@author_1.name} John Smith")
+    expect(page).to have_content(150)
+    expect(page).to have_content(1990)
   end
 end

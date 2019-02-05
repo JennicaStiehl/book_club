@@ -9,8 +9,8 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
-    @top_3_books = Book.top_by_rating
-    @bottom_3_books = Book.bottom_by_rating
+    @top_three_books = Book.top_by_rating
+    @bottom_three_books = Book.bottom_by_rating
     @top_users = User.most_reviews
   end
 

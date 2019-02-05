@@ -1,29 +1,48 @@
-<div class='book-info'>
-  <%= link_to('Delete Book', book_path(@book), method: :delete) %>
-  <%= link_to('Add Review', new_book_review_path(@book)) %>
-  <p> <%= @book.title %></p>
-  <p>Author(s): <%= @book.authors.map {|author| author.name}.join(", ") %></p>
-  <p>Pages: <%= @book.pages %></p>
-</div>
-<div class='top-reviews'>
-  <h3>Top Reviews</h3>
-  <% @book.top_reviews.each do |review| %>
-  <p>Title: <%= review.review_title %>, Rating: <%= review.rating %> / 5, User: <%= review.user.name %> </p>
-  <% end %>
-</div>
-<div class='bottom-reviews'>
-  <h3>Bottom Reviews</h3>
-  <% @book.bottom_reviews.each do |review| %>
-  <p>Title: <%= review.review_title %>, Rating: <%= review.rating %> / 5, User: <%= review.user.name %> </p>
-  <% end %>
-</div>
-<div class='average-rating'>
-  <p>Average Rating: <%= @book.average_rating %></p>
-</div>
-<% @book.reviews.each do |review| %>
-  <div class="review-<%= review.id %>">
-    <p> <%= review.review_title %> </p>
-    <p><%= review.text %></p>
-    <p>Rating: <%= review.rating %> / 5</p>
+<html>
+<head>
+</head>
+<body>
+  <div id='book-show-grid'>
+    <div id='book-show-header'>
+      <div id='book-info'>
+        <h3><%= @book.title %></h3>
+        <img id='default-image' src="https://i.pinimg.com/originals/fb/ab/7a/fbab7ad8cf7c407c40a66a7fafd4c933.png" alt="default-book">
+        <p>Author(s): <% @book.authors.each do |author| %>
+          <%= link_to("#{author.name}", author_path(author), class: 'links') %>
+        <% end %></p>
+        <p>Pages: <%= @book.pages %> </p>
+        <p>Year of Publication: <%= @book.year %> </p>
+        <p>Average Rating: <%= @book.average_rating %> / 5.0</p>
+        <%= link_to('Delete This Book', book_path(@book), method: :delete) %>
+      </div>
+      <div id='book-stats'>
+        <div id='top-reviews'>
+          <h3>Top Rated Reviews:</h3>
+          <% @book.top_reviews.each do |review| %>
+            <h4>Title: <%= review.review_title %></h4>
+            <p>Rating: <%= review.rating %> / 5</p>
+            <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
+          <% end %>
+        </div>
+        <div id='bottom-reviews'><h3>Bottom Rated Reviews:</h3>
+          <% @book.bottom_reviews.each do |review| %>
+            <h4>Title: <%= review.review_title %></h4>
+            <p>Rating: <%= review.rating %> / 5</p>
+            <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
+            <% end %>
+        </div>
+      </div>
   </div>
-<% end %>
+    <div id='book-review-list'>
+      <% @book.reviews.each do |review| %>
+        <div class='book-review' id="book-review-<%= "#{review.id}" %>">
+          <h3><%= review.review_title %></h3>
+          <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
+          <p><%= review.text %></p>
+          <p>Rating: <%= review.rating %> / 5</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>
