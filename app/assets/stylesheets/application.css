@@ -129,7 +129,7 @@ body {
 
 #welcome-links {
   display: grid;
-  grid-template-columns: 20vw 15vw 15vw 15vw 15vw 20vw
+  grid-template-columns: 20vw 15vw 15vw 15vw 15vw 20vw;
 }
 
 #book-index-grid {
