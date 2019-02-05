@@ -21,7 +21,7 @@ authors = [
   { name: 'James Patterson' },
   { name: 'Candice Fox' },
   { name: 'Maxine Paetro' },
-  { name: 'Stephen Baxter'}
+  { name: 'Stephen Baxter' }
 ]
 
 authors.each do |author|
