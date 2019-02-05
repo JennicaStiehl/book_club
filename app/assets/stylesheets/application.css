@@ -13,20 +13,67 @@
  *= require_tree .
  *= require_self
  */
- .navbar{
-   color:white;
-   background-color:navy;
+ * {
+   box-sizing: border-box;
  }
- .navbar ul{
-   padding:1%;
-   list-style: none;
- }
- .navbar li{
-   display: inline;
- }
- .navbar a{
-   color:white;
-   text-decoration: none;
-   font-size: 18px;
-   padding-right: 15px;
- }
+
+
+label {
+  font-size: 20pt;
+  margin: 10px
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  align-items: center;
+}
+
+input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: dodgerblue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  font-size: 16pt;
+  margin: 10px
+}
+
+input[type=submit]:hover {
+  background-color: navy;
+}
+
+.form-title {
+  background-color: #e5efff;
+  text-align: center;
+  font-size: 30pt;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+}
+
+.new-form {
+  border-radius: 5px;
+  background-color: #e5efff;
+  padding: 20px;
+  display: grid;
+  text-align: center;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+}

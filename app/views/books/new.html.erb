@@ -1,14 +1,16 @@
-<%= form_for @book do |f| %>
-  <%= f.label :title %>
+<h1 class='form-title'>Add a Book</h1>
+
+<%= form_for @book, html: { :class => "new-form"} do |f| %>
+  <%= f.label :title, value: 'Book Title:' %>
   <%= f.text_field :title %>
 
-  <%= f.label :authors %>
-  <%= f.text_field :authors %>
+  <%= f.label :authors, value: 'Author(s):' %>
+  <%= f.text_field :authors, value: '' %>
 
-  <%= f.label :pages %>
+  <%= f.label :pages, value: 'Number of Pages:' %>
   <%= f.number_field :pages %>
 
-  <%= f.label :year %>
+  <%= f.label :year, value: 'Year of Publication:' %>
   <%= f.number_field :year %>
 
   <%= f.submit 'Submit' %>
