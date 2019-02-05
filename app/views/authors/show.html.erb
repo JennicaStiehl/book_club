@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-  <h1 id='author-name'> <%= @author.name %> </h1>
+  <h1 id='user-author-title'> <%= @author.name %> </h1>
   <div id='book-list'>
     <% @author.books.each do |book| %>
       <div class='author-book' id="book-<%= book.id %>">

@@ -36,10 +36,10 @@
     <div id='book-review-list'>
       <% @book.reviews.each do |review| %>
         <div class='book-review' id="book-review-<%= "#{review.id}" %>">
-          <p>Title: <%= review.review_title %></p>
+          <h3><%= review.review_title %></h3>
           <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
-          <p>Rating: <%= review.rating %> / 5</p>
           <p><%= review.text %></p>
+          <p>Rating: <%= review.rating %> / 5</p>
         </div>
       <% end %>
     </div>
