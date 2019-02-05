@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   validates_uniqueness_of :title
 
   has_many :author_books
-  has_many :authors, through: :author_books
+  has_many :authors, through: :author_books, :dependent => :delete_all
   has_many :reviews
 
   def top_reviews

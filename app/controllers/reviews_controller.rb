@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def destroy
     Review.find(params[:id]).destroy
     redirect_to user_path(params[:user_id])
@@ -10,7 +11,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
     user = User.create(name: params[:review][:user].titlecase)
     book = Book.find(params[:book_id])
     Review.create(
@@ -19,7 +19,8 @@ class ReviewsController < ApplicationController
         text: params[:review][:text],
         user: user,
         book: book)
-    redirect_to books_path
+    redirect_to book_path(params[:book_id])
   end
+
 
 end
