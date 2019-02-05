@@ -73,6 +73,18 @@ body {
   font-weight: bold
 }
 
+.book-review {
+  display: grid;
+  grid-template-rows: 5vh 5vh 5vh auto;
+  text-align: center;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  margin: 5px
+}
+
 #welcome-grid {
   display: grid;
   grid-template-rows: 15vh 10vh 10vh 10vh;
@@ -142,4 +154,39 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#book-show-grid {
+  display: grid;
+  grid-template-rows: auto
+}
+
+#book-show-header {
+  display: grid;
+  grid-template-columns: 30vw 69vw;
+  margin: 5px
+}
+
+#book-stats {
+  display: grid;
+  grid-template-columns: 35vw 35vw;
+  background-color: #e5efff;
+  border-top: outset dodgerblue 5px;
+  border-right: outset dodgerblue 5px;
+  border-bottom: outset dodgerblue 5px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#book-info {
+  text-align: center;
+  background-color: #e5efff;
+  border-top: outset dodgerblue 5px;
+  border-left: outset dodgerblue 5px;
+  border-bottom: outset dodgerblue 5px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+#book-title {
+  font-size: 16pt;
+  font-weight: bold;
 }
