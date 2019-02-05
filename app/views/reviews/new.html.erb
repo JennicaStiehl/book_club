@@ -1,17 +1,17 @@
-<h1>Add Review</h1>
+<h1 class='form-title'>Add a Review</h1>
 
-<%= form_for [@book, @review] do |f| %>
+<%= form_for [@book, @review], html: { :class => "new-form"} do |f| %>
 
   <%= f.label :review_title %>
   <%= f.text_field :review_title %>
 
-  <%= f.label :user %>
+  <%= f.label :user, value: 'Username' %>
   <%= f.text_field :user %>
 
-  <%= f.label :rating %>
+  <%= f.label :rating, value: 'Rating (out of 5)' %>
   <%= f.number_field :rating %>
 
-  <%= f.label :text %>
+  <%= f.label :text, value: 'Review Text' %>
   <%= f.text_area :text %>
 
   <%= f.submit "Submit" %>
