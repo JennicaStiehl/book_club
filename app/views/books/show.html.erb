@@ -16,7 +16,7 @@
         <%= link_to('Delete This Book', book_path(@book), method: :delete) %>
       </div>
       <div id='book-stats'>
-        <div>
+        <div id='top-reviews'>
           <h3>Top Rated Reviews:</h3>
           <% @book.top_reviews.each do |review| %>
             <h4>Title: <%= review.review_title %></h4>
@@ -24,7 +24,7 @@
             <%= link_to("#{review.user.name}", user_path(review.user), class: 'links') %>
           <% end %>
         </div>
-        <div><h3>Bottom Rated Reviews:</h3>
+        <div id='bottom-reviews'><h3>Bottom Rated Reviews:</h3>
           <% @book.bottom_reviews.each do |review| %>
             <h4>Title: <%= review.review_title %></h4>
             <p>Rating: <%= review.rating %> / 5</p>

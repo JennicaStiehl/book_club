@@ -3,6 +3,7 @@
 </head>
 <body>
   <h1 id='user-author-title'> <%= @author.name %> </h1>
+  <div id='new-book'><%= link_to('Delete This Author', author_path(@author), method: :delete) %></div>
   <div id='book-list'>
     <% @author.books.each do |book| %>
       <div class='author-book' id="book-<%= book.id %>">

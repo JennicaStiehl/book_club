@@ -94,7 +94,8 @@ body {
   border-style: outset;
   border-color: dodgerblue;
   border-width: 5px;
-  padding: 10px
+  padding: 10;
+  margin: 5px
 }
 
 .user-review {
@@ -244,6 +245,7 @@ body {
 }
 
 #new-book {
+  text-align: center;
   font-size: 16pt;
   background-color: #e5efff;
   border-radius: 10px;

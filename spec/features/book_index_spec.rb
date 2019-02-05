@@ -107,7 +107,7 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
   end
 
   describe "displays an area with statistics about all books" do
-
+    # User Story 9
     it "with three of the highest-rated books (book title and rating score)" do
       visit books_path
 
@@ -135,7 +135,10 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
 
   end
   it "has a link to create a new book" do
+    # User Story 12
+
     visit books_path
+    
     click_link('Add a Book')
     fill_in 'Title', with: 'my book'
     fill_in 'Authors', with: 'john smith, gloria stiehl'
@@ -145,7 +148,7 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
 
     expect(page).to have_current_path(books_path)
     expect(page).to have_content('My Book')
-    expect(page).to have_content("Author(s): #{@author_1.name}, John Smith")
+    expect(page).to have_content("Author(s): #{@author_1.name} John Smith")
     expect(page).to have_content(150)
     expect(page).to have_content(1990)
   end
