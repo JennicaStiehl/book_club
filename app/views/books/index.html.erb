@@ -49,6 +49,7 @@
         </div>
       </div>
     </div>
+    <div id='new-book'><%= link_to('Add a Book', new_book_path) %></div>
     <% @books.each do |book| %>
       <div class='book-grid'>
         <div class='book-title-image' id="book-<%= "#{book.id}" %>-title-image">

@@ -133,6 +133,7 @@ body {
 
 #book-index-grid {
   text-align: center;
+  grid-template-columns: auto
 }
 
 #top-stats-grid {
@@ -240,4 +241,14 @@ body {
 #user-sorting-links {
   display: grid;
   grid-template-rows: 5vh 5vh
+}
+
+#new-book {
+  font-size: 16pt;
+  background-color: #e5efff;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: dodgerblue;
+  border-width: 5px;
+  padding: 10px
 }
