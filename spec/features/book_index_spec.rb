@@ -29,7 +29,7 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
     @review_11 = @book_4.reviews.create(review_title: "b", rating: 1, text: "b", user: @user_1)
   end
   it 'displays all titles and attributes of each book in the database' do
-    #User Story 6
+    # User Story 6
 
     visit books_path
 
@@ -46,7 +46,7 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
   end
 
   it 'displays average book rating and number of reviews' do
-    #User Story 7
+    # User Story 7
 
     visit books_path
 
@@ -62,7 +62,7 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
   end
 
   it 'can sort the page by rating, pages, and reviews' do
-    #User Story 8
+    # User Story 8
 
     visit books_path
 
@@ -138,7 +138,7 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
     # User Story 12
 
     visit books_path
-    
+
     click_link('Add a Book')
     fill_in 'Title', with: 'my book'
     fill_in 'Authors', with: 'john smith, gloria stiehl'

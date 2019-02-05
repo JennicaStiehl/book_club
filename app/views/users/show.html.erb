@@ -13,8 +13,8 @@
       </div>
       <div></div>
     </div>
-    <% @user.reviews.each do |review| %>
-      <div class='user-review' id="user-review-<%= review.id %> ">
+    <% @reviews.each do |review| %>
+      <div class='user-review' id="user-review-<%= review.id %>">
         <h3 class="title"><%= review.review_title %></h3>
         <p><%= review.text %></p>
         <p>Rating: <%= review.rating %> / 5</p>

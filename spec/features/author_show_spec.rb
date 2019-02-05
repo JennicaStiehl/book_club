@@ -19,7 +19,7 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
   end
 
   it 'displays all books by that author, each with a title, publication year, number of pages, and any additional authors' do
-    #User Story 14
+    # User Story 14
     visit author_path(@author_1.id)
 
     within(id: "book-#{@book_1.id}") do
@@ -45,7 +45,7 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
   end
 
   it 'displays one of the top reviews for each book (review title, score, and username)' do
-    #User Story 15
+    # User Story 15
     visit author_path(@author_1.id)
     within(id: "book-#{@book_1.id}") do
       expect(page).to have_content("Review Title: #{@review_1.review_title}")
@@ -67,7 +67,7 @@ RSpec.describe 'when a visitor visits an author\'s show page it' do
   end
 
   it 'has an option to delete the author' do
-    #User Story 20
+    # User Story 20
     visit author_path(@author_1)
 
     click_link('Delete This Author')

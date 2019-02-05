@@ -16,7 +16,7 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
     @review_5 = Review.create(review_title: 'House of Leaves Review 5', text: 'It was amazing!', rating: 5, book: @book_1, user: @user_5)
   end
   it 'shows the book title, author(s), number of pages, and a list of reviews' do
-    #User Story 10
+    # User Story 10
     visit book_path(@book_1.id)
 
     within(id: 'book-info') do
@@ -36,7 +36,7 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
     end
   end
   it 'shows the top and bottom three reviews for the book as well as the average rating of all reviews' do
-    #User Story 11
+    # User Story 11
     visit book_path(@book_1.id)
 
     within(id: 'top-reviews') do
@@ -71,6 +71,7 @@ RSpec.describe 'when visitor visits a book\'s show page', type: :feature do
   end
 
   it 'has an option to delete the book' do
+    # User Story 19
     visit book_path(@book_1.id)
     click_link('Delete This Book')
 
