@@ -33,10 +33,10 @@ RSpec.describe 'when visitor visits reviews new page', type: :feature do
     it 'sees a review title' do
       visit new_book_review_path(@book_1.id)
 
-      fill_in 'Review title', with: 'I love Rails!'
-      fill_in 'User', with: 'benfolds5'
-      fill_in 'Rating', with: 5
-      fill_in 'Text', with: 'really great stuff!'
+      fill_in 'review_review_title', with: 'I love Rails!'
+      fill_in 'review_user', with: 'benfolds5'
+      fill_in 'review_rating', with: 5
+      fill_in 'review_text', with: 'really great stuff!'
       click_on 'Submit'
       expect(page).to have_current_path(book_path(@book_1))
       expect(page).to have_content('I love Rails!')

@@ -138,12 +138,12 @@ RSpec.describe 'when visitor visits book index page it', type: :feature do
     # User Story 12
 
     visit books_path
-
     click_link('Add a Book')
-    fill_in 'Title', with: 'my book'
-    fill_in 'Authors', with: 'john smith, gloria stiehl'
-    fill_in 'Pages', with: 150
-    fill_in 'Year', with: 1990
+
+    fill_in 'book_title', with: 'my book'
+    fill_in 'book_authors', with: 'john smith, gloria stiehl'
+    fill_in 'book_pages', with: 150
+    fill_in 'book_year', with: 1990
     click_on 'Submit'
 
     expect(page).to have_current_path(books_path)
