@@ -1,26 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Book Club project was created by Christopher Lewis and Jennica Stiehl. It contains a database of books, authors, and user reviews. You can add or delete books and reviews and visit various show pages for books, authors, and users.
 
-Things you may want to cover:
+- Ruby version 2.4.1
 
-* Ruby version
+- Rails version 5.1.6.1
 
-* System dependencies
+- Ruby Gems: byebug, rspec-rails, capybara, launchy, pry, shoulda-matchers, simplecov
 
-* Configuration
+- Configuration: rails new “app_name” -T -d=postgresql --skip-spring --skip-turbolinks, rake db:{drop,create,migrate,seed}
 
-* Database creation
+- Test Suite: rspec
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-Heroku:
-https://damp-harbor-29425.herokuapp.com/ | https://git.heroku.com/damp-harbor-29425.git
+- Heroku: https://infinite-harbor-64965.herokuapp.com
