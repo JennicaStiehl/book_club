@@ -49,6 +49,10 @@ class Book < ApplicationRecord
   end
 
   def self.bottom_by_rating
-    sort_by_rating(:asc).first(3)
+    Book.select('books.*, coalesce(avg(reviews.rating), 0) as avg_rating')
+        .joins(:reviews)
+        .group('books.id')
+        .order("avg_rating asc")
+        .first(3)
   end
 end
