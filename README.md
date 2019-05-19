@@ -12,4 +12,4 @@ This Book Club project was created by Christopher Lewis and Jennica Stiehl. It c
 
 - Test Suite: rspec
 
-- Heroku: https://infinite-harbor-64965.herokuapp.com
+- Heroku: https://turing-book-club.herokuapp.com/
